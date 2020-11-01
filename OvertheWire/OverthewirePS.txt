@@ -1,0 +1,53 @@
+Bandit1-boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+Bandit2-CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+Bandit3-UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+Bandit4-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+Bandit5-koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+Bandit6-DXjZPULLxYr17uwoI01bNLQbtFemEgo7 (find . -type f -size 1033c ! -executable -exec file {} + | grep -w text)
+Bandit7-HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs (find . -group bandit6 -user bandit7 or find / -type f -size 33c -group bandit6 -user bandit7)
+Bandit8-cvX2JJa4CFALtqS87jk27qwqGhBM9plV (grep -w "millionth" data.txt)
+Bandit9-UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR (sort data.txt | uniq -c | grep '^ *1 ')
+Bandit10-truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk (strings data.txt  | grep '&=')
+Bandit11-IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR (base64 data.txt -d)
+Bandit12-5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu (alias rot13='tr A-Za-z N-ZA-Mn-za-m' cat data.txt | rot13)
+Bandit13-8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+Bandit14-4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e( ssh bandit14@localhost -i sshkey.private whoami cat /etc/bandit_pass/bandit14
+Bandit15-BfMYroe26WYalil77FoDi9qh59eK5xNr (echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000)
+Bandit16-cluFn7wTiGryunymYOu4RcffSxQluehd (echo "BfMYroe26WYalil77FoDi9qh59eK5xNr" | openssl s_client -connect localhost:30001 -ign_eof)
+Bandit17 (nmap localhost -p 31000-32000 -A echo "cluFn7wTiGryunymYOu4RcffSxQluehd" | openssl s_client -connect localhost:31790 -ign_eof, mkdir tmp folder, and copy ssh key into .keyfile via vim
+Bandit18-kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd (diff passwords.old passwords.new)
+Bandit19-IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x (ssh -t bandit18@bandit.labs.overthewire.org -p 2220 "cat ~/readme")
+Bandit20-GbKksEFF4yrVs6il55v6gwY5aVje5f0j(ls -al ./bandit20-do; ./bandit20-do id; ./bandit20-do cat /etc/bandit_pass/bandit20)
+Bandit21-gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr (ls -al ./suconnect echo "GbKksEFF4yrVs6il55v6gwY5aVje5f0j" | nc -l localhost -p 61337 &
+Bandit22-Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI (ls -al /etc/cron.d/ cat /etc/cron.d/cronjob_bandit cat /usr/bin/cronjob_bandit22.sh cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv)
+Bandit23-jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n (#!/bin/bashmyname=$bandit23 mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1) echo $mytarget cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+Bandit24- UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ( mkdir -p /tmp/secttp cd /tmp/secttp touch secttp.sh
+( #!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+)
+Bandit25-uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+Bandit26-5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+Bandit27-3ba3118a22e93127a4ed485be72ef5ea
+Bandit28-0ef186ac70e04ea33b4c1853d2526fa2
+Bandit29-bbc96594b4e001778eee9975372716b2
+Bandit30-5b90576bedb2cc04c86a9e924ce42faf (explore dev branch in git repo)
+Bandit31-47e603bb428404d265f59c42920d81e5(git tag)
+Bandit32-56a9bf19c63d650ce78e6ec0354ee45e(push a key.txt file to git after editing .gitignore)
+Bandit33-c9c3199ddf4121b10cf581a98d51caee($0 pwd ls -al * cat /etc/bandit_pass/bandit33
+Bandit34- 
