@@ -1,2 +1,3 @@
 Files to ignore
 ~/ctf/OvertheWire/Bandit/repo
+.vim/

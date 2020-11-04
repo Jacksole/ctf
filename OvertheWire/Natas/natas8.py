@@ -13,19 +13,16 @@ A script to use in Natas Wargame room in OvertheWire
 import re
 import requests
 
-username = 'natas5'
-password = 'iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq'
-
-# headers = {"Referer": "http://natas5.natas.labs.overthewire.org/"}
-cookies = {"loggedin": "1"}
+username = 'natas8'
+password = 'DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe'
 
 url = 'http://%s.natas.labs.overthewire.org/' % username
 
 session = requests.Session()
-
-response = session.get(url, auth=(username, password), cookies=cookies)
+response = session.get(url, auth=(username, password))
+response = session.post(url, data={"secret": "oubWYf2kBq",
+                                   "submit": "submit"}, auth=(username, password))
 content = response.text
-
 # print(content)
-# print(session.cookies)
-print(re.findall(' natas6 is (.*)</div>', content)[0])
+
+print(re.findall('natas9 is (.*)', content)[0])
