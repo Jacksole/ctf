@@ -3,3 +3,6 @@ invoke-webrequest433
 123
 61580
 underthewire3347
+197
+7Points ($filename='readme*.*' $searchinfolder='C:\Users\century7' Get-ChildItem -Path $searchinfolder -Filter $filename -Recurse)
+696(Get-Content .\Unique.txt | Sort-Object | Get-Unique | Measure-Object)
