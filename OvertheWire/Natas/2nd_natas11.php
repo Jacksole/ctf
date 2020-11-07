@@ -15,7 +15,14 @@ function xor_encrypt($in, $key) {
     return $outText;
 
 }
+$cihertext=hex2bin('0a554b221e00482b02044f2503131a70531957685d555a2d121854250355026852115e2c17115e680c');
+$plaintext = json_encode($defaultdata);
+$key = 'qw8J';
 
-$original = json_encode($defaultdata);
+$good_data = array( "showpassword"=>"yes", "bgcolor"=>"#ffffff" );
+$good_plaintext = json_encode($good_data);
+$good_ciphertext = xor_encrypt($good_plaintext, $key);
 
+$cookie = base64_encode($good_ciphertext);
+echo($cookie);
 ?>
