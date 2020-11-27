@@ -2,23 +2,23 @@
 
 - [ ] OpenVPN https://tryhackme.com/room/openvpn
 - [ ] Welcome https://tryhackme.com/jr/welcome
-- [ ] Intro to Researching https://tryhackme.com/room/introtoresearch
+- [x] Intro to Researching https://tryhackme.com/room/introtoresearch
 - [ ] Learn Linux https://tryhackme.com/room/zthlinux
 - [ ] Crash Course Pentesting https://tryhackme.com/room/ccpentesting
 
 **Introductory CTFs to get your feet wet**
 
-- [ ] Google Dorking https://tryhackme.com/room/googledorking
-- [ ] OHsint https://tryhackme.com/room/ohsint
+- [x] Google Dorking https://tryhackme.com/room/googledorking
+- [x] OHsint https://tryhackme.com/room/ohsint
 - [ ] Shodan.io https://tryhackme.com/room/shodan
 
 # Level 2 - Tooling
 
-- [ ] Tmux https://tryhackme.com/room/rptmux
-- [ ] Nmap https://tryhackme.com/room/rpnmap
+- [x] Tmux https://tryhackme.com/room/rptmux
+- [x] Nmap https://tryhackme.com/room/rpnmap
 - [ ] Web Scanning https://tryhackme.com/room/rpwebscanning
 - [ ] Sublist3r https://tryhackme.com/room/rpsublist3r
-- [ ] Metasploit https://tryhackme.com/room/rpmetasploit
+- [x] Metasploit https://tryhackme.com/room/rpmetasploit
 - [ ] Hydra https://tryhackme.com/room/hydra
 - [ ] Linux Privesc https://tryhackme.com/room/linuxprivesc
 - [ ] Web Scanning https://tryhackme.com/room/rpwebscanning
