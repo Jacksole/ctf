@@ -1,7 +1,7 @@
 # Level 1 - Intro
 
-- [ ] OpenVPN https://tryhackme.com/room/openvpn
-- [ ] Welcome https://tryhackme.com/jr/welcome
+- [x] OpenVPN https://tryhackme.com/room/openvpn
+- [x] Welcome https://tryhackme.com/jr/welcome
 - [x] Intro to Researching https://tryhackme.com/room/introtoresearch
 - [ ] Learn Linux https://tryhackme.com/room/zthlinux
 - [ ] Crash Course Pentesting https://tryhackme.com/room/ccpentesting
@@ -37,7 +37,7 @@
 - [ ] The Cod Caper https://tryhackme.com/room/thecodcaper
 - [ ] Ice https://tryhackme.com/room/ice
 - [ ] Lazy Admin https://tryhackme.com/room/lazyadmin
-- [ ] Basic Pentesting https://tryhackme.com/room/basicpentestingjt
+- [x] Basic Pentesting https://tryhackme.com/room/basicpentestingjt
 
 # Level 4 - Web
 
