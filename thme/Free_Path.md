@@ -3,8 +3,8 @@
 - [x] OpenVPN https://tryhackme.com/room/openvpn
 - [x] Welcome https://tryhackme.com/jr/welcome
 - [x] Intro to Researching https://tryhackme.com/room/introtoresearch
-- [ ] Learn Linux https://tryhackme.com/room/zthlinux
-- [ ] Crash Course Pentesting https://tryhackme.com/room/ccpentesting
+- [x] Learn Linux https://tryhackme.com/room/zthlinux
+- [x] Crash Course Pentesting https://tryhackme.com/room/ccpentesting
 
 **Introductory CTFs to get your feet wet**
 
