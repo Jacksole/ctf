@@ -10,7 +10,6 @@
 
 - [x] Google Dorking https://tryhackme.com/room/googledorking
 - [x] OHsint https://tryhackme.com/room/ohsint
-- [ ] Shodan.io https://tryhackme.com/room/shodan
 
 # Level 2 - Tooling
 
@@ -22,6 +21,7 @@
 - [ ] Hydra https://tryhackme.com/room/hydra
 - [ ] Linux Privesc https://tryhackme.com/room/linuxprivesc
 - [ ] Web Scanning https://tryhackme.com/room/rpwebscanning
+- [ ] OWASP Top 10 https://tryhackme.com/room/owasptop10
 
 **More introductory CTFs**
 
