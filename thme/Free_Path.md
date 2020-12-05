@@ -25,7 +25,7 @@
 
 **More introductory CTFs**
 
-- [ ] Vulnversity - https://tryhackme.com/room/vulnversity
+- [x] Vulnversity - https://tryhackme.com/room/vulnversity
 - [ ] Blue - https://tryhackme.com/room/blue
 - [ ] Simple CTF https://tryhackme.com/room/easyctf
 - [ ] Bounty Hacker https://tryhackme.com/room/cowboyhacker
