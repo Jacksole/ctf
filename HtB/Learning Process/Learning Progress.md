@@ -12,7 +12,7 @@ People who have been on the road for years will know how exhausting it can be an
 
 The difference here is easy to see. If you stop on the mountain and do not climb any further up, you will stay on the same spot. Look at the following mathematical example to see the difference in numbers:
 
-> (1.00)<sup365</sup> = 1.00
+> (1.00)<sup>365</sup> = 1.00
 > (1.01)<sup>365</sup> = 37.7
 
 Here you can already see the enormous difference, how much it makes, even if you only increase your performance by 1% per day. If you want to record your progress in writing to look back and see how far you have already gone, you can create two lists.
