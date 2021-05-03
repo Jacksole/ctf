@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///C:/Program Files (x86)/Nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.91 scan initiated Mon May 03 06:36:37 2021 as: &quot;C:\\Program Files (x86)\\Nmap\\nmap.exe&quot; -oX ./nmap.log -A -p- 10.10.21.185 -->
+<nmaprun scanner="nmap" args="&quot;C:\\Program Files (x86)\\Nmap\\nmap.exe&quot; -oX ./nmap.log -A -p- 10.10.21.185" start="1620038197" startstr="Mon May 03 06:36:37 2021" version="7.91" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.10.21.185" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<taskprogress task="SYN Stealth Scan" time="1620038451" percent="96.08" remaining="11" etc="1620038461"/>
+<taskprogress task="NSE" time="1620038502" percent="98.54" remaining="1" etc="1620038502"/>
+<host starttime="1620038199" endtime="1620038527"><status state="up" reason="echo-reply" reason_ttl="61"/>
+<address addr="10.10.21.185" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65532">
+<extrareasons reason="resets" count="65532"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="61"/><service name="ssh" product="OpenSSH" version="7.6p1 Ubuntu 4ubuntu0.3" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.6p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  2048 91:df:5c:7c:26:22:6e:90:23:a7:7d:fa:5c:e1:c2:52 (RSA)&#xa;  256 86:57:f5:2a:f7:86:9c:cf:02:c1:ac:bc:34:90:6b:01 (ECDSA)&#xa;  256 81:e3:cc:e7:c9:3c:75:d7:fb:e0:86:a0:01:41:77:81 (ED25519)"><table>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQCsQBsFkx22xGvnoVM2jdoshYhErSrOah7KuFFxx17bNXpP0ngmmi8eg8cF15/W09dFRZkHpolm+hwczAJg8YtCikckf57z6tuMZIJG97TEFjtevvyw2hB7YjUJXCsQOkGKUkHs8q1QqiTX0jFaM/LQdZm+77MxuaU8XXbcghfHISAyh2++AwD6LIIJvVKk/1vjMHO6GtgoyvVmlVrITZv+5naaAUgfyqoKJr2mfsJDl8MpalE4Fb9aXP2LopBgQ5YetpjFI4kyvxlaZZ86nrvvCc5FZWXM5ezfJT1R8fIaM8+3rY/6ktlVzQ/C3fNqJaT9YolYOYcQuHZ1mJ7rrE0P</elem>
+<elem key="fingerprint">91df5c7c26226e9023a77dfa5ce1c252</elem>
+<elem key="bits">2048</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+<table>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCdRH8y2bhSww6mxtO3NwyfVfbhPCFZ8RxKhZrmc4LoqyRvJhmISqcY/e9JmkvjeqFx+QLGsadZo3ap9QyVuDAE=</elem>
+<elem key="fingerprint">8657f52af7869ccf02c1acbc34906b01</elem>
+<elem key="bits">256</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+<table>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIBOdFR83uui/AaLq3bUcJ0REIIL0laVVmSMvkeVpGWd1</elem>
+<elem key="fingerprint">81e3cce7c93c75d7fbe086a001417781</elem>
+<elem key="bits">256</elem>
+<elem key="type">ssh-ed25519</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="61"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" hostname="POLOSMB" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="61"/><service name="netbios-ssn" product="Samba smbd" version="4.7.6-Ubuntu" extrainfo="workgroup: WORKGROUP" hostname="POLOSMB" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="22"/>
+<portused state="closed" proto="tcp" portid="1"/>
+<portused state="closed" proto="udp" portid="37168"/>
+<osmatch name="Linux 3.1" accuracy="95" line="62920">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="95"><cpe>cpe:/o:linux:linux_kernel:3.1</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.2" accuracy="95" line="64667">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="95"><cpe>cpe:/o:linux:linux_kernel:3.2</cpe></osclass>
+</osmatch>
+<osmatch name="AXIS 210A or 211 Network Camera (Linux 2.6.17)" accuracy="94" line="61818">
+<osclass type="webcam" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="94"><cpe>cpe:/o:linux:linux_kernel:2.6.17</cpe></osclass>
+<osclass type="webcam" vendor="AXIS" osfamily="embedded" accuracy="94"><cpe>cpe:/h:axis:210a_network_camera</cpe><cpe>cpe:/h:axis:211_network_camera</cpe></osclass>
+</osmatch>
+<osmatch name="ASUS RT-N56U WAP (Linux 3.4)" accuracy="93" line="8401">
+<osclass type="WAP" vendor="Asus" osfamily="embedded" accuracy="93"><cpe>cpe:/h:asus:rt-n56u</cpe></osclass>
+<osclass type="WAP" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="93"><cpe>cpe:/o:linux:linux_kernel:3.4</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.16" accuracy="93" line="64174">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="93"><cpe>cpe:/o:linux:linux_kernel:3.16</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 2.6.32" accuracy="92" line="55366">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:2.6.32</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.1 - 3.2" accuracy="92" line="62940">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.11" accuracy="92" line="63490">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:3.11</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.2 - 4.9" accuracy="92" line="65317">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:3</cpe></osclass>
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
+</osmatch>
+<osmatch name="Linux 3.5" accuracy="92" line="65650">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="3.X" accuracy="92"><cpe>cpe:/o:linux:linux_kernel:3.5</cpe></osclass>
+</osmatch>
+<osfingerprint fingerprint="OS:SCAN(V=7.91%E=4%D=5/3%OT=22%CT=1%CU=37168%PV=Y%DS=4%DC=T%G=Y%TM=608FD37F&#xa;OS:%P=i686-pc-windows-windows)SEQ(SP=FF%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)S&#xa;OS:EQ(CI=Z%II=I)OPS(O1=M506ST11NW7%O2=M506ST11NW7%O3=M506NNT11NW7%O4=M506ST&#xa;OS:11NW7%O5=M506ST11NW7%O6=M506ST11)WIN(W1=F4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=&#xa;OS:F4B3%W6=F4B3)ECN(R=Y%DF=Y%T=40%W=F507%O=M506NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T&#xa;OS:=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R&#xa;OS:%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=&#xa;OS:40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0&#xa;OS:%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R&#xa;OS:=Y%DFI=N%T=40%CD=S)&#xa;"/>
+</os>
+<distance value="4"/>
+<hostscript><script id="clock-skew" output="mean: -4s, deviation: 0s, median: -4s"><elem key="stddev">0</elem>
+<elem key="median">-4</elem>
+<elem key="count">3</elem>
+<elem key="mean">-4</elem>
+</script><script id="nbstat" output="NetBIOS name: POLOSMB, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)"/><script id="smb-os-discovery" output="&#xa;  OS: Windows 6.1 (Samba 4.7.6-Ubuntu)&#xa;  Computer name: polosmb&#xa;  NetBIOS computer name: POLOSMB\x00&#xa;  Domain name: \x00&#xa;  FQDN: polosmb&#xa;  System time: 2021-05-03T10:41:38+00:00&#xa;"><elem key="os">Windows 6.1</elem>
+<elem key="lanmanager">Samba 4.7.6-Ubuntu</elem>
+<elem key="server">POLOSMB\x00</elem>
+<elem key="date">2021-05-03T10:41:38+00:00</elem>
+<elem key="fqdn">polosmb</elem>
+<elem key="domain_dns">\x00</elem>
+<elem key="workgroup">WORKGROUP\x00</elem>
+</script><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="smb2-security-mode" output="&#xa;  2.02: &#xa;    Message signing enabled but not required"><table key="2.02">
+<elem>Message signing enabled but not required</elem>
+</table>
+</script><script id="smb2-time" output="&#xa;  date: 2021-05-03T10:41:38&#xa;  start_date: N/A"><elem key="date">2021-05-03T10:41:38</elem>
+<elem key="start_date">N/A</elem>
+</script></hostscript><trace port="23" proto="tcp">
+<hop ttl="1" ipaddr="10.6.0.1" rtt="47.00"/>
+<hop ttl="4" ipaddr="10.10.21.185" rtt="108.00"/>
+</trace>
+<times srtt="118416" rttvar="14599" to="176812"/>
+</host>
+<runstats><finished time="1620038527" timestr="Mon May 03 06:42:07 2021" summary="Nmap done at Mon May 03 06:42:07 2021; 1 IP address (1 host up) scanned in 331.53 seconds" elapsed="331.53" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
